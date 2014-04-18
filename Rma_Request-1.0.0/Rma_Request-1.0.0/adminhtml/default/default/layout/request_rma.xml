@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Magento backend layout
+*
+* @author Magento
+*/
+-->
+<layout>
+	<adminhtml_request_index>
+		<reference name="content">
+			<block type="rma/adminhtml_request" name="request" />
+		</reference>
+	</adminhtml_request_index>
+	<adminhtml_request_grid>
+		<block type="rma/adminhtml_request_grid" name="request_grid"/>
+	</adminhtml_request_grid>
+	<adminhtml_request_new>
+		<update handle="adminhtml_request_edit" />
+	</adminhtml_request_new>
+	<adminhtml_request_edit>
+		<update handle="editor"/>
+		<reference name="content">
+			<block type="rma/adminhtml_request_edit" name="request_edit" />
+		</reference>
+		<reference name="left">
+			<block type="rma/adminhtml_request_edit_tabs" name="request_edit_tabs">
+			<block type="rma/adminhtml_request_edit_tab_customer" name="request_edit_tab_customer" template="request_rma/request/customer.phtml"></block>
+			<block type="rma/adminhtml_request_edit_tab_order" name="request_edit_tab_order" template="sales/order/view/info.phtml"></block>
+		</reference>
+	</adminhtml_request_edit>
+</layout>

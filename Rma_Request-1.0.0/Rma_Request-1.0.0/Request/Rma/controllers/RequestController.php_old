@@ -1,0 +1,313 @@
+<?php 
+/**
+ * Request_Rma extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Request
+ * @package		Request_Rma
+ * @copyright  	Copyright (c) 2014
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Report front controller
+ *
+ * @category	Request
+ * @package		Request_Rma
+ * @author 		Tosif Qureshi
+ */
+class Request_Rma_RequestController extends Mage_Core_Controller_Front_Action {
+	/**
+ 	 * default action
+ 	 * @access public
+ 	 * @return void
+ 	 * @author Tosif Qureshi
+ 	 */
+ 	public function indexAction() {
+		
+		/* Check if the customer is logged in or not */
+		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+			/* Load layout of rma form */
+			$this->loadLayout();
+			/* Set breadcrumbs for rma listing */
+			if (Mage::helper('rma/request')->getUseBreadcrumbs()) {
+				if ($breadcrumbBlock = $this->getLayout()->getBlock('breadcrumbs')) {
+					/* Set home breadcrumb navigation */
+					$breadcrumbBlock->addCrumb('home', array(
+								'label'	=> Mage::helper('rma')->__('Home'), 
+								'link' 	=> Mage::getUrl(),
+							)
+					);
+					/* Set current rma listing breadcrumb navigation */
+					$breadcrumbBlock->addCrumb('request', array(
+								'label'	=> Mage::helper('rma')->__('Rma'), 
+								'link'	=> '',
+						)
+					);
+				}
+			}
+			$headBlock = $this->getLayout()->getBlock('head');
+			if ($headBlock) {
+				$headBlock->setTitle(Mage::getStoreConfig('rma/request/meta_title'));
+				$headBlock->setKeywords(Mage::getStoreConfig('rma/request/meta_keywords'));
+				$headBlock->setDescription(Mage::getStoreConfig('rma/request/meta_description'));
+			}
+			
+			/* Render layout of rma listing */
+			$this->renderLayout();
+		} else {
+			/* Redirect to login page */
+			$this->_redirect('customer/account/login'); 
+		}
+	}
+	
+	/**
+	 * rma form to select report type
+	 * @access public
+	 * @return void
+	 * @author Tosif Qureshi
+	 */
+	public function rmaformAction() {
+		
+		/* Check if the customer is logged in or not */
+		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+			
+			ini_set('display_error',1);
+			/* Load layout of rma form */
+			$this->loadLayout();
+			/* Set breadcrumbs for rma form */
+			$this->setRmaFormBreadcrumbs('Rma Form');
+			/* Render layout of rma form */
+			$this->renderLayout();
+		} else {
+			/* Redirect to login page */
+			$this->_redirect('customer/account/login'); 
+		}
+	}
+	
+	/**
+	 * Set breadcrumbs for rma form
+	 * @access private
+	 * @return void
+	 * @author Tosif Qureshi
+	 */
+	private function setRmaFormBreadcrumbs($current_lbl='') {
+		
+		/* Set breadcrumbs for rma form */
+		if (Mage::helper('rma/request')->getUseBreadcrumbs()) {
+			if ($breadcrumbBlock = $this->getLayout()->getBlock('breadcrumbs')) {
+				/* Set home breadcrumb navigation */
+				$breadcrumbBlock->addCrumb('home', array(
+							'label'	=> Mage::helper('rma')->__('Home'), 
+							'link' 	=> Mage::getUrl(),
+						)
+				);
+				/* Set rma listing breadcrumb navigation */
+				$breadcrumbBlock->addCrumb('report', array(
+							'label'	=> Mage::helper('rma')->__('Rma'), 
+							'link'	=> Mage::helper('rma/request')->getRmaUrl(),
+					)
+				);
+				/* Set current rma form breadcrumb navigation */
+				$breadcrumbBlock->addCrumb('request/rmaform', array(
+							'label'	=> Mage::helper('rma')->__($current_lbl), 
+							'link'	=> '',
+					)
+				);
+			}
+		}
+	}
+	
+	/**
+	 * load rma type form after selection
+	 * @access public
+	 * @return void
+	 * @author Tosif Qureshi
+	 */
+	public function rmaTypeFormAction() {
+		
+		/* Check if the customer is logged in or not */
+		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+			
+			/* Set post values */
+			Mage::register('rma_post_data', $this->getRequest()->getPost());
+			
+			/* Set rma report type title */
+			$rma_type_title = 'Complaints - Defective / wrong item(s)';
+			if($this->getRequest()->getPost('rma_type')==2) {
+				$rma_type_title = 'Request for return of item(s)';
+			}
+			Mage::register('rma_type_title', $rma_type_title);
+			$sku_number = $this->getRequest()->getPost('sku_number');
+			/* Set rma product name by sku */
+			$product = Mage::getModel('catalog/product')->loadByAttribute('sku',$sku_number); 
+			$product_data = array();
+			if(!empty($product)) {
+				$product_data['product_id'] = $product->getEntity_id();
+				$product_data['product_name'] = $product->getName();
+				/* Set session value of sku */
+				Mage::getSingleton('core/session')->setSkuNumber($sku_number);
+			} else {
+				Mage::getSingleton('core/session')->addError('Enter a valid Sku number.');
+				/* Set session value of sku as blank */
+				Mage::getSingleton('core/session')->setSkuNumber('');
+			}
+		
+			Mage::register('product_data', $product_data);
+		
+			/* Load layout of rma report type form */
+			$this->loadLayout();
+			/* Set breadcrumbs for rma type form */
+			$this->setRmaTypeBreadcrumbs($rma_type_title);
+			/* Render layout of rma type form */
+			$this->renderLayout();
+		} else {
+			/* Redirect to login page */
+			$this->_redirect('customer/account/login'); 
+		}
+	}
+	
+	/**
+	 * Set breadcrumbs for rma type forms
+	 * @access private
+	 * @return void
+	 * @author Tosif Qureshi
+	 */
+	private function setRmaTypeBreadcrumbs($typeTitle='') {
+		/* Set breadcrumbs for rma type form */
+		if (Mage::helper('rma/request')->getUseBreadcrumbs()) {
+			if ($breadcrumbBlock = $this->getLayout()->getBlock('breadcrumbs')) {
+				/* Set home breadcrumb navigation */
+				$breadcrumbBlock->addCrumb('home', array(
+							'label'	=> Mage::helper('rma')->__('Home'), 
+							'link' 	=> Mage::getUrl(),
+						)
+				);
+				/* Set rma listing breadcrumb navigation */
+				$breadcrumbBlock->addCrumb('report', array(
+							'label'	=> Mage::helper('rma')->__('Rma'), 
+							'link'	=> Mage::helper('rma/request')->getRmaUrl(),
+					)
+				);
+				/* Set rma form breadcrumb navigation */
+				$breadcrumbBlock->addCrumb('report/rmaform', array(
+							'label'	=> Mage::helper('rma')->__('Rma Form'), 
+							'link'	=> Mage::helper('rma/request')->getRmaFormUrl(),
+					)
+				);
+				/* Set current rma type form breadcrumb navigation */
+				$breadcrumbBlock->addCrumb('request/rmaTypeForm', array(
+							'label'	=> Mage::helper('rma')->__($typeTitle), 
+							'link'	=> '',
+					)
+				);
+			}
+		}
+	}
+	
+	/**
+	 * load detail page after rma reporting
+	 * @access public
+	 * @return void
+	 * @author Tosif Qureshi
+	 */
+	public function rmaReportDetailAction() {
+		/* Check if the customer is logged in or not */
+		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+			/* Load layout of rma report forms */
+			$this->loadLayout();
+			$this->renderLayout();
+		} else {
+			/* Redirect to login page */
+			$this->_redirect('customer/account/login'); 
+		}
+	}
+	
+	/**
+ 	 * view rma action
+ 	 * @access public
+ 	 * @return void
+ 	 * @author Tosif Qureshi
+ 	 */
+	public function rmaViewAction() {
+		/* Check if the customer is logged in or not */
+		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+			/* Get rma id */
+			$rmaId = $this->getRequest()->getParam('id',0);
+			/* rma report data */
+			$rma   = Mage::getModel('rma/request')
+							->setStoreId(Mage::app()->getStore()->getId())
+							->load($rmaId);
+			
+			if (!$rma->getId()) {
+				$this->_forward('no-route');
+			} else {
+				/* Set rma data here */
+				Mage::register('current_rma_data', $rma);
+				/* Load layout of rma view */
+				$this->loadLayout();
+				/* Set breadcrumbs for rma view */
+				$this->setRmaFormBreadcrumbs('Rma view');
+				/* Render layout of rma view */
+				$this->renderLayout();
+			}
+		} else {
+			/* Redirect to login page */
+			$this->_redirect('customer/account/login'); 
+		}
+	}
+	
+	/**
+	 * save rma data - action
+	 * @access public
+	 * @return void
+	 * @author Tosif Qureshi
+	 */
+	public function saveAction() {
+		
+		if ($data = $this->getRequest()->getPost()) {
+			try {
+				/* load rma model */
+				$rma = Mage::getModel('rma/request');
+				/* Get the customer data */
+				$customer = Mage::getSingleton('customer/session')->getCustomer();
+				$customer_id = $customer->Entity_id;
+				/* Set post values for data insertion */
+				$rma->setData('customer_id', $customer_id);
+				$rma->setData('product_id', $data['product_id']);	
+				$rma->setData('sku_number', $data['sku_number']);
+				$rma->setData('invoice_number', $data['invoice_number']);
+				$rma->setData('quantity', $data['quantity']);
+				$rma->setData('descriptions', $data['error_description']);
+				$rma->setData('serial_number', $data['serial_number']);
+				$rma->setData('type_id', $data['rma_type']);
+				
+				/* Save post data of rma form */
+				$rma->save();
+				/* Set inserted rma id for detail page */
+				Mage::getSingleton('core/session')->setLastRmaId($rma->getId());
+				/* Set sku number of rma for detail page */
+				Mage::getSingleton('core/session')->setSkuNumber($data['sku_number']);
+				/* Set success message after save */
+				Mage::getSingleton('core/session')->addSuccess('Successfully report your rma');
+				/* Redirect to rma detail grid. */
+				$this->_redirect('rma/request/rmaReportDetail'); 
+				
+			} catch (Exception $e) {
+				
+				//if there is an error return to edit
+				Mage::getSingleton('core/session')->addError('Not Saved. Error:'.$e->getMessage());
+				Mage::getSingleton('core/session')->setExampleFormData($data);
+				$this->_redirect('rma/request'); 
+			}	
+		} else {
+			$this->_redirect('rma/request');
+		}    
+    }
+
+}
