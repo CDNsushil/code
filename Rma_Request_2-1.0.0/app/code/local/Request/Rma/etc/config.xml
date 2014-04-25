@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Request_Rma extension
+ */
+-->
+<config>
+	<modules>
+		<Request_Rma>
+			<version>0.0.1</version>
+		</Request_Rma>
+	</modules>
+	<global>
+		<resources>
+			<request_rma_setup>
+				<setup>
+					<module>Request_Rma</module>
+					<class>Request_Rma_Model_Resource_Setup</class>
+				</setup>
+			</request_rma_setup>
+		</resources>
+		<blocks>
+			<rma>
+				<class>Request_Rma_Block</class>
+			</rma>
+		</blocks>
+		<helpers>
+			<rma>
+				<class>Request_Rma_Helper</class>
+			</rma>
+		</helpers>
+		<models>
+			<rma>
+				<class>Request_Rma_Model</class>
+				<resourceModel>rma_resource</resourceModel>
+			</rma>
+			<rma_resource>
+				<class>Request_Rma_Model_Resource</class>
+				<entities>
+					<request>
+					   <table>rma</table>
+					 </request>
+					 <type>
+                        <table>rma_type</table>
+                    </type>
+                    <reason>
+                        <table>rma_reason</table>
+                    </reason>
+                     <items>
+                        <table>rma_items</table>
+                    </items>
+                    <emailtemplate>
+                        <table>core_email_template</table>
+                    </emailtemplate>
+                    <eavattribute>
+                        <table>eav_attribute</table>
+                    </eavattribute>
+				</entities>
+			</rma_resource>
+			<core>
+                    <rewrite><email_template>Request_Rma_Model_Core_Email_Template</email_template></rewrite>
+            </core> 
+		</models>
+		<events>
+			<controller_front_init_routers>
+				<observers>
+					<request_rma>
+						<class>Request_Rma_Controller_Router</class>
+						<method>initControllerRouters</method>
+					</request_rma>
+				</observers>
+			</controller_front_init_routers>
+		</events>
+	</global>
+	
+	<frontend>
+		<routers>
+			<rma>
+				<use>standard</use>
+				<args>
+					<module>Request_Rma</module>
+					<frontName>rma</frontName>
+				</args>
+			</rma>
+		</routers>
+		<layout>
+			<updates>
+				<request_rma>
+					<file>request_rma.xml</file>
+				</request_rma>
+			</updates>
+		</layout>
+		
+	</frontend>
+	
+	 <admin>
+        <routers>
+            <!-- Includes our controller, so when we add the adminhtml menu Request below, it is found! -->
+            <adminhtml>
+                 <args>
+                     <modules>
+                         <rma before="Mage_Adminhtml">Request_Rma_Adminhtml</rma>
+                     </modules>
+                 </args>
+             </adminhtml>
+        </routers>
+        <layout>
+			<updates>
+				<request_rma>
+					<file>request_rma.xml</file>
+				</request_rma>
+			</updates>
+		</layout>
+    </admin>
+    
+	<default>
+		<rma>
+			<request>
+				<breadcrumbs>1</breadcrumbs>
+				<rss>1</rss>
+				<meta_title>RMA</meta_title>
+			</request>
+		</rma>
+	</default>
+</config>

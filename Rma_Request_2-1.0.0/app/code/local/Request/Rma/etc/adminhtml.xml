@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config>
+   <menu>
+		<rma module="rma">
+			<title>RMA</title>
+			<sort_order>71</sort_order>               
+			<children>
+				<request module="rma">
+					<title>Manage Request</title>
+					<sort_order>0</sort_order>
+					<action>adminhtml/request</action>
+				</request>
+				<type module="rma">
+					<title>Request Type</title>
+					<sort_order>1</sort_order>
+					<action>adminhtml/type</action>
+				</type>
+				<reason module="rma">
+					<title>Request Reason</title>
+					<sort_order>2</sort_order>
+					<action>adminhtml/reason</action>
+				</reason>
+			</children>
+		</rma>
+	</menu>
+	<acl>
+		<resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+			<admin>
+				<children>
+					<request translate="title">
+						<title >RMA Module</title>
+						<sort_order>200</sort_order>
+					</request>
+					<type translate="title">
+						<title>Request Type</title>
+						<sort_order>201</sort_order>
+					</type>
+					<reason translate="title">
+						<title>Request Reason</title>
+						<sort_order>202</sort_order>
+					</reason>
+				</children>
+			</admin>
+		</resources>   
+	</acl>
+</config>
