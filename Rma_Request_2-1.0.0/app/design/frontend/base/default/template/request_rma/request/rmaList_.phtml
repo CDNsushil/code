@@ -1,0 +1,83 @@
+<?php 
+/**
+ * Request_Rma extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Request
+ * @package		Request_Rma
+ * @copyright  	Copyright (c) 2014
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Rma view template
+ *
+ * @category	Request
+ * @package		Request_Rma
+ * @author      Tosif Qureshi
+ */
+?>
+<?php
+/* Get all rma records */
+$_rma = $this->getRmaData();
+?>
+<div class="block block-subscribe">
+	<div class="block-title">
+		<!-- Set page title here -->
+		<div class="fl width130px"><strong><span><?php echo $this->__('Rma Listing');?></span></strong></div>
+		<!-- Set tab to report rma -->
+		<div class="tar">
+			&nbsp;
+			<!--<a href="<?php //echo $this->getUrl('rma/request/rmaform');?>">
+				<?php //echo $this->__('Request Rma');?>
+			</a>-->
+		</div>
+    </div>
+    <?php if ($_rma->getSize() > 0) :?>
+		<!-- Rma listing start here -->
+		<div class="block-content">
+			<table>
+				<thead>
+					<tr class="headings">
+						<th class="rmaListTh"><?php echo $this->__('Sku Number');?></th>
+						<th class="rmaListTh"><?php echo $this->__('Description');?></th>
+						<th class="rmaListTh"><?php echo $this->__('Serial Number');?></th>
+						<th class="rmaListTh"><?php echo $this->__('Rma Type');?></th>
+						<th class="rmaListTh"><?php echo $this->__('Status');?></th>
+						<th class="rmaListTh"></th>
+					</tr>
+				</thead>
+				<?php foreach($_rma as $_rma) :?>
+					<tr class="lh20">
+						<td class="tac">
+							<?php echo $_rma->getSku_number(); ?>
+						</td>
+						<td class="tac lh12">
+							<?php echo $_rma->getDescriptions(); ?>
+						</td>
+						<td class="tac">
+							<?php echo $_rma->getSerial_number(); ?>
+						</td>
+						<td class="tac">
+							<?php echo Mage::helper('rma/request')->getRmaType($_rma->getType_id());?>
+						</td>
+						<td class="tac">
+							<?php echo Mage::helper('rma/request')->getRmaStatus($_rma->getStatus());?>
+						</td>
+						<td class="tac">
+							<a href="<?php echo $this->getRmaViewUrl($_rma);?>" class="textDecoNone"><?php echo $this->__('View');?></a>
+						</td>
+					</tr>
+				<?php endforeach;?>
+			</table>
+		</div>
+		<!-- Rma listing end here -->
+	<?php else : ?>
+		<?php echo Mage::helper('rma')->__('There are no rma at this moment');?>
+	<?php endif;?> 
+</div>

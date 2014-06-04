@@ -1,0 +1,144 @@
+<?php 
+/**
+ * Reports_Rma extension
+ * Rma view template
+ *
+ * @category	Reports
+ * @package		Reports_Rma
+ * @author      Tosif Qureshi
+ */
+?>
+<?php
+/* Get last reported rma record */
+$_rma_data = $this->getCurrentReportedRmaData();
+/* Get order details  */
+$_order = $this->getOrderDetails();
+/* Get all rma items */
+$_rma_item_data = $this->getRmaItemsData();
+/* Get Terms content data */
+$_terms_data = $this->getTermsPageData();
+?>
+<div class="block block-subscribe">
+	<div class="block-title">
+		<strong><span><?php echo $this->__('Rma Details');?></span></strong>
+    </div>
+   
+   <?php //if (!$_order->getIsVirtual()): ?>
+		<div class="col2-set order-info-box">
+			<div class="col-1">
+				<div class="box-title">
+					<!-- Define shipping title here -->
+					<div>
+						<h2><?php echo $this->__('Shipping Address');?></h2>
+					</div>
+					<!-- Define shipping edit url here -->
+					<div>
+						<a href="<?php echo $this->getShippingEditUrl($_order->getEntity_id(),$this->getRmaId());?>"><?php echo $this->__('Edit') ?></a>
+					</div>
+				</div>
+				<!-- Define shipping details here -->
+				<div class="box">
+					<div class="box-content">
+						<address><?php echo $_order->getShippingAddress()->format('html');?></address>
+					</div>
+				</div>
+			</div>
+			<div class="col-2">
+				<div class="box-title">
+					<!-- Define billing title here -->
+					<div>
+						<h2><?php echo $this->__('Billing Address');?></h2>
+					</div>
+					<!-- Define billing edit url here -->
+					<div>
+						<a href="<?php echo $this->getBillingEditUrl($_order->getEntity_id(),$this->getRmaId());?>"><?php echo $this->__('Edit') ?></a>
+					</div>
+				</div>
+				<!-- Define billing details here -->
+				<div class="box">
+					<div class="box-content">
+						<address><?php echo $_order->getBillingAddress()->format('html');?></address>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php //endif; ?>
+   
+    <!-- Rma Detail form start here -->
+	
+		<div class="block-content">
+			<table class="rmaListTable">
+				<thead>
+					<tr class="headings rmaListTr">
+						<th class="rmaDetailTh"><?php echo $this->__('Sku Number');?></th>
+						<th class="rmaDetailTh"><?php echo $this->__('Product Name');?></th>
+						<th class="rmaDetailTh"><?php echo $this->__('Quantity');?></th>
+						<th class="rmaDetailTh"></th>
+					</tr>
+				</thead>
+				<?php foreach($_rma_item_data as $item) : 
+					if($this->getRmaId()==$item->getRma_id()) :
+				?>
+				<tr class="reportDetailTr">
+					<td class="rmaListCol">
+						<?php echo $item->getSku_number(); ?>
+					</td>
+					<td class="rmaListCol">
+						<?php echo $this->getReportedProductName($item->getSku_number()); ?>
+					</td>
+					<td class="rmaListCol">
+						<?php echo $item->getQuantity(); ?>
+					</td>
+					<td class="rmaListCol">
+						<a href="<?php echo $this->getRmaEditUrl($item->getItem_id());?>" class="textDecoNone"><?php echo $this->__('Edit');?></a>
+					</td>
+				</tr>
+				<?php 
+				endif;
+				endforeach;?>
+			</table>
+		<div class="clear"></div>
+	
+	<!-- Rma Detail form end here -->
+	<?php if($_terms_data->getContent()) : ?>
+		<div>
+			<div class="rmaTerms">
+				<?php echo $_terms_data->getContent();?>
+			</div>
+		</div>
+		<div class="clear"></div>
+	<?php endif;?>
+	
+	<!-- RMA final step form start here -->
+	<form id="send_report_form" name="send_report_form" action="<?php echo $this->getUrl('rma/request/');?>submitRmaRequest" method="post">
+		<!-- Define here the terms checkbox -->
+		<?php if($_terms_data->getContent()) : ?>
+			<div>
+				<input type="checkbox" id="agree_terms" name="agree_terms" value="1" title="agree_terms" class="checkbox required-entry">
+				<label for="agree_terms"><?php echo $this->__('I have read, understood and agreed the Terms & Conditions.');?></label>
+			</div>
+		<?php endif;?>
+		<!-- Define here hidden rma id -->
+		<input type="hidden" name="rma_id" value="<?php echo $this->getRmaId();?>">
+		<input type="hidden" name="product_id" value="<?php echo $_rma_data->getProduct_id();?>">		
+		<!-- Div start here of submit button -->
+		<div class="actions detailBtnDiv">
+			<span class="fl mt2">
+				<a href="<?php echo $this->getRmaFormUrl($_order->getEntity_id(),$_rma_data->getId());?>" class="textDecoNone width85px"><?php echo $this->__('Add more items');?></a> |
+			</span>
+			<span class="fr">
+				<button type="submit" class="button">
+					<span><?php echo $this->__('Submit Request');?></span>
+				</button>
+			</span>	
+		</div>
+	</form>
+	<!-- RMA final step form end here -->
+	</div>
+</div>
+
+<script type="text/javascript">	
+	//<![CDATA[
+        var sendReportForm = new VarienForm('send_report_form');
+    //]]>
+</script>

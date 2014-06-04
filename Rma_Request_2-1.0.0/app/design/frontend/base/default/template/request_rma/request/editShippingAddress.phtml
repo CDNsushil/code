@@ -1,0 +1,127 @@
+<?php 
+/**
+ * Request_Rma extension
+ * Edit shipping template
+ *
+ * @category	Request
+ * @package		Request_Rma
+ * @author      Tosif Qureshi
+ */
+
+/* Get shipping record */
+$_shipping_data = $this->getOrderShippingDetails();
+/* Get country records */
+$_countries = Mage::helper('rma/request')->getCountryListing();
+?>
+<div class="block block-subscribe">
+	<div class="block-title">
+		<strong><span><?php echo $this->__('Edit Shipping Details');?></span></strong>
+    </div>
+	<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate">
+		<div class="block-content">
+			<h2 class="legend"><?php echo $this->__('Contact Information') ?></h2>
+			<ul class="form-list">
+				 <li class="fields">
+					<div class="field">
+						<label for="firstname" class="required"><em>*</em><?php echo $this->__('First Name') ?></label>
+						<div class="input-box">
+							<input type="text" name="firstname" value="<?php echo $this->escapeHtml($_shipping_data->getFirstname()) ?>" title="<?php echo $this->__('First Name') ?>" class="input-text" />
+						</div>
+					</div>
+					<div class="field">
+						<label for="lastname" class="required"><em>*</em><?php echo $this->__('Last Name') ?></label>
+						<div class="input-box">
+							<input type="text" name="lastname" id="lastname" title="<?php echo $this->__('Last Name') ?>" value="<?php echo $this->escapeHtml($_shipping_data->getLastname()) ?>" class="input-text" />
+						</div>
+					</div>
+				</li>
+				<li class="wide">
+					<label for="company"><?php echo $this->__('Company') ?></label>
+					<div class="input-box">
+						<input type="text" name="company" id="company" title="<?php echo $this->__('Company') ?>" value="<?php echo $this->escapeHtml($_shipping_data->getCompany()) ?>" class="input-text" />
+					</div>
+				</li>
+				<li class="fields">
+					<div class="field">
+						<label for="telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
+						<div class="input-box">
+							<input type="text" name="telephone" value="<?php echo $this->escapeHtml($_shipping_data->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text" id="telephone" />
+						</div>
+					</div>
+				   
+				</li>
+			</ul>
+		</div>
+		<div class="block-content">
+			<h2 class="legend"><?php echo $this->__('Address') ?></h2>
+			<ul class="form-list">
+			<?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+				<li class="wide">
+					<label for="street_1" class="required"><em>*</em><?php echo $this->__('Street Address') ?></label>
+					<div class="input-box">
+						<input type="text" name="street" value="<?php echo $this->escapeHtml($_shipping_data->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="input-text <?php echo $_streetValidationClass ?>" />
+					</div>
+				</li>
+				<li class="fields">
+					<div class="field">
+						<label for="city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
+						<div class="input-box">
+							<input type="text" name="city" value="<?php echo $_shipping_data->getCity() ?>"  title="<?php echo $this->__('City') ?>" class="input-text" id="city" />
+						</div>
+					</div>
+				</li>
+				<li class="fields">
+					<div class="field">
+						<label for="zip" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+						<div class="input-box">
+							<input type="text" name="postcode" value="<?php echo $this->escapeHtml($_shipping_data->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international" />
+						</div>
+					</div>
+				</li>
+				 <li class="fields">
+					  <div class="field">
+						<label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+						<div class="input-box">
+							<?php if (count($_countries) > 0): ?>
+								<select name="country_id" id="country">
+									<option value="">-- Please Select --</option>
+									<?php foreach($_countries as $_country): ?>
+										<option value="<?php echo $_country['value'] ?>" <?php if($_country['value']==$_shipping_data->getCountryId()) {?>selected="selected"<?php }?>>
+											<?php echo $_country['label'] ?>
+										</option>
+									<?php endforeach; ?>
+								</select>
+							<?php endif;?>
+						</div>
+					</div>
+				</li>
+				<li>
+					<!-- Define hidden field of address id -->
+					<input type="hidden" name="address_id" value="<?php echo $_shipping_data->getId();?>">
+					<!-- Define hidden field of rma id -->
+					<input type="hidden" name="rma_id" value="<?php echo $this->getRmaId();?>">
+					<!-- Div start here of submit button -->
+					<div class="actions">
+						<p class="required tal"><?php echo $this->__('* Required Fields') ?></p>
+						<button type="submit" title="<?php echo $this->__('Update Address') ?>" class="button">
+							<span><?php echo $this->__('Update Address') ?></span>
+						</button>	
+					</div>
+					<!-- Div end here of submit button -->	
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+<!-- Div start here for back url -->
+<div class="buttons-set">
+	<p class="back-link"><a href="<?php echo $this->getRmaDetailUrl() ?>"><small>&laquo; </small><?php echo $this->getBackTitle() ?></a></p>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+//]]>
+</script>
+
