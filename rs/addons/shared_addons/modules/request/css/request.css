@@ -1,0 +1,38 @@
+/**  **/
+
+ .sort_status .chzn-drop ul li {
+	display: block !important;
+}
+.request ul li{
+	line-height:10px !important;
+}
+.sort_status{
+	float: right;
+	margin-top: -9px;
+}
+.filter_title{
+	font-weight: bold;
+	float: left;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+
+.my_btn{
+	padding: 6px  !important;
+	margin: 0px 4px 0px 10px  !important;
+}
+.btn_color{
+color:#000 !important;
+}
+.back_btn{
+	margin-top: 1px;
+}
+
+div.view_request {
+	width: 150px;
+	float: left;
+}
+.pd20{
+	padding:20px;
+}

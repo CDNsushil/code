@@ -1,0 +1,351 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+ 
+/**
+ * 
+ * Todasquare frontend Controller Class
+ *
+ *  Manage Frontend Details (Writing & Publishing)
+ *
+ *  @package	Toadsquare
+ *  @subpackage	Module
+ *  @category	Controller
+ *  @author		Sushil Mishra
+ *  @link		http://toadsquare.com/
+ *	Date	23-05-2013
+ **/
+ 
+class filmnvideo extends MX_Controller {
+	private $data = array();
+	private $dirCacheMedia = '';
+	private $dirUploadMedia = '';
+	
+	private $userId = null;
+	private $IndustryId = 0;
+	/**
+	 * Constructor
+	 */
+	 
+	 function __construct() {
+		//Load required Model, Library, language and Helper files
+			$load = array(
+				'model'		=> 'filmnvideo/model_filmnvideo',  	
+				'language' 	=> 'media',							
+				'config'		=>	'media/media'   		
+			);
+			parent::__construct($load);		
+			$this->dirCacheMedia = ROOTPATH.'cache/filmnvideo/';  
+			$this->dirUploadMedia = 'media/'.LoginUserDetails('username').'/filmnvideo/'; 
+			$this->data['dirUploadMedia'] = $this->dirUploadMedia; 
+	}
+		
+	/**
+	 * Index fucntion by default call when Controller initialised
+	 *
+	 * by default call function for Writing and Publishing project type 
+	 *
+	 * @access	public
+	 * @param	
+	 * @return	
+	 */
+	
+	
+	public function index() {
+		$this->data['dataURL'] = base_url(lang().'/'.$this->router->fetch_class().'/landingPageProject');
+        $this->data['navigationHeading'] = $this->lang->line('FvCollections');
+        $this->landingpage('countProject');
+	}
+    
+    public function craved($cravedFor='') {
+        $cravedFor = ($cravedFor == 'video')?'video':'collections';
+        $this->data['cravedFor'] = $cravedFor;
+        if($cravedFor == 'video'){
+            $this->data['dataURL'] = base_url(lang().'/'.$this->router->fetch_class().'/cravedElements');
+            $countString='countElement';
+        }else{
+            $this->data['dataURL'] = base_url(lang().'/'.$this->router->fetch_class().'/cravedProject');
+            $countString='countProject';
+        }
+		
+        $this->data['navigationHeading'] = $this->lang->line('FvCollections');
+        $this->data['scroll'] = false;
+        $this->landingpage($countString);
+	}
+    
+    public function upcoming() {
+        $this->data['dataURL'] = base_url(lang().'/'.$this->router->fetch_class().'/landingPageUpcoming');
+        $this->data['navigationHeading'] = $this->lang->line('FvCollectionUpcoming');
+        $this->landingpage('countUpcoming');
+	}
+    
+    public function reviews() {
+        $this->data['dataURL'] = base_url(lang().'/'.$this->router->fetch_class().'/landingPageReviews');
+        $this->data['navigationHeading'] = $this->lang->line('FvCollectionReviews');
+        $this->landingpage('countReviews');
+	}
+    
+    public function news() {
+        $this->data['dataURL'] = base_url(lang().'/'.$this->router->fetch_class().'/landingPageNews');
+        $this->data['navigationHeading'] = $this->lang->line('FvCollectionNews');
+        $this->landingpage('countNews');
+	}
+    
+    public function landingpage($cd = 'countProject') {
+		$this->data['projectType'] = 'filmNvideo';
+        if(isset($this->data['cravedFor']) && ($this->data['cravedFor'] == 'video')){
+            $this->data['craveHeading'] = $this->lang->line('FvTopCravedCollectionElements');
+        }else{
+            $this->data['craveHeading'] = $this->lang->line('FvTopCravedCollections');
+        }
+        $this->getNavigation($cd);
+        $this->data['innerView'] = 'landingpage/media_landing';
+		$this->new_version->load('new_version','landingpage/landingpage',$this->data);
+	}
+    
+    function getNavigation($cd = 'countProject'){
+        $this->data['countProject'] = $this->model_common->countResult('Project', array('isPublished'=>'t','isArchive'=>'f','projectType'=>$this->data['projectType']));
+        $this->data['countElement'] = $this->model_common->countResult('FvElement', array('isPublished'=>'t','isArchive'=>'f'));
+        $this->data['countUpcoming'] = $this->model_common->countResult('UpcomingProject', array('isPublished'=>'t','projIndustry'=>1));
+		$this->data['countReviews'] = $this->model_common->countResult('ReviewsElement', array('isPublished'=>'t','industryId'=>1));
+        $this->data['countNews'] = $this->model_common->countResult('NewsElement', array('isPublished'=>'t','industryId'=>1));
+		$this->data['isdata']=false;
+
+		if($this->data['countProject'] || $this->data['countUpcoming'] || $this->data['countNews'] || $this->data['countReviews']){
+            $module = $this->router->fetch_class();
+            $method = $this->router->fetch_method();
+            if(!$this->data[$cd]){
+                if($this->data['countProject']){
+                    redirect($module.DIRECTORY_SEPARATOR.'index');
+                }elseif($this->data['countUpcoming']){
+                    redirect($module.DIRECTORY_SEPARATOR.'upcoing');
+                }
+                elseif($this->data['countReviews']){
+                    redirect($module.DIRECTORY_SEPARATOR.'reviews');
+                }
+                elseif($this->data['countNews']){
+                    redirect($module.DIRECTORY_SEPARATOR.'news');
+                }
+            }else{
+                $this->data['isdata']=true;
+                $this->data['module']=$module;
+                $this->data['method']=$method;
+                
+                if($this->data['countProject']){
+                   $url = ($method == 'index' || $method == '')?'javascript:void(0);':base_url(lang().DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'index');
+                   $this->data['navigations']['index'] = array('title'=>$this->lang->line('FvCollections'),'url'=>$url);
+                   
+                   $craveUrl = (isset($this->data['cravedFor']) && ($this->data['cravedFor']  == 'collections')) ? 'javascript:void(0);':base_url(lang().DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'craved'.DIRECTORY_SEPARATOR.'collections');
+                   $this->data['craveNav']['collections'] = array('title'=>$this->lang->line('FvTopCravedCollections'),'url'=>$craveUrl);
+                }
+                
+                if($this->data['countElement']){
+                   $craveUrl = (isset($this->data['cravedFor']) && ($this->data['cravedFor']  == 'video'))?'javascript:void(0);':base_url(lang().DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'craved'.DIRECTORY_SEPARATOR.'video');
+                   $this->data['craveNav']['video'] = array('title'=>$this->lang->line('FvTopCravedCollectionElements'),'url'=>$craveUrl);
+                }
+                
+                if($this->data['countUpcoming']){
+                   $url = ($method == 'upcoming')?'javascript:void(0);':base_url(lang().DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'upcoming');
+                   $this->data['navigations']['upcoming'] = array('title'=>$this->lang->line('FvCollectionUpcoming'),'url'=>$url);
+                }
+                
+                if($this->data['countReviews']){
+                   $url = ($method == 'reviews')?'javascript:void(0);':base_url(lang().DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'reviews');
+                   $this->data['navigations']['reviews'] = array('title'=>$this->lang->line('FvCollectionReviews'),'url'=>$url);
+                }
+                
+                if($this->data['countNews']){
+                   $url = ($method == 'news')?'javascript:void(0);':base_url(lang().DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'news');
+                   $this->data['navigations']['news'] = array('title'=>$this->lang->line('FvCollectionNews'),'url'=>$url);
+                }
+                
+                
+            }
+            
+		}
+    }
+	
+    function cravedProject(){	
+		$userId=0;
+		$limit = $this->input->post('limit');
+		$limit = is_numeric($limit) ? $limit : 10;
+		$offset = $this->input->post('offset');
+		$offset = is_numeric($offset) ? $offset : 0;
+		$projectElementEntityId = getMasterTableRecord('FvElement');
+		$result= $this->model_common->getProjectRecord('filmNvideo',$userId,$projectId=0,'projId,projSellstatus,projCategory,projName,projShortDesc,craveCount,imageFileCount,docFileCount,audioFileCount,cdCount,videoFileCount,dvdCount,ratingAvg,projCreateDate,projLastModifyDate,projBaseImgPath',$limit,$offset,'LogSummary.craveCount','DESC'); 
+		$returnData = array();
+        $projectData = array(
+            'projectElementEntityId'=>$projectElementEntityId,
+            'projectType'=>'filmNvideo',
+            'frontendMathod'=>'filmvideo',
+            'fileType_dwnld'=>array('videoFileCount'=>$this->lang->line('videoFile')),
+            'fileType_shipd'=>array('dvdCount'=>$this->lang->line('DVD')),
+        );
+		if($result && is_array($result) && count($result)>0){
+			foreach($result as $data){
+                $projectData['data'] = $data;
+				$returnData[]=$this->load->view('landingpage/media_listing',$projectData, true);
+			}
+		}
+		echo  json_encode($returnData);	
+	}
+    
+    function cravedElements(){	
+		$limit = $this->input->post('limit');
+		$limit = is_numeric($limit) ? $limit : 10;
+		$offset = $this->input->post('offset');
+		$offset = is_numeric($offset) ? $offset : 0;
+		$projectElementEntityId = getMasterTableRecord('FvElement');
+		$result= $this->model_common->getProjectElementsLP('FvElement', $limit, $offset); 
+		$returnData = array();
+        $projectData = array(
+            'projectElementEntityId'=>$projectElementEntityId,
+            'projectType'=>'filmNvideo',
+            'frontendMathod'=>'filmvideo',
+            'fileType_dwnld'=>$this->lang->line('videoFile'),
+            'fileType_shipd'=>$this->lang->line('DVD')
+        );
+		if($result && is_array($result) && count($result)>0){
+			foreach($result as $data){
+                $projectData['data'] = $data;
+				$returnData[]=$this->load->view('landingpage/media_element_listing',$projectData, true);
+			}
+		}
+		echo  json_encode($returnData);	
+	}
+    
+	function landingPageProject(){	
+		$userId=0;
+		$limit = $this->input->post('limit');
+		$limit = is_numeric($limit) ? $limit : 10;
+		$offset = $this->input->post('offset');
+		$offset = is_numeric($offset) ? $offset : 0;
+		$projectElementEntityId = getMasterTableRecord('FvElement');
+		$result= $this->model_common->getProjectRecord('filmNvideo',$userId,$projectId=0,'projId,projSellstatus,projCategory,projName,projShortDesc,craveCount,imageFileCount,docFileCount,docCount,audioFileCount,cdCount,videoFileCount,dvdCount,ratingAvg,projCreateDate,projLastModifyDate,projBaseImgPath',$limit,$offset); 
+		
+        $projectData = array(
+            'projectElementEntityId'=>$projectElementEntityId,
+            'projectType'=>'filmNvideo','frontendMathod'=>'filmvideo',
+            'fileType_dwnld'=>array('videoFileCount'=>$this->lang->line('videoFile')),
+            'fileType_shipd'=>array('dvdCount'=>$this->lang->line('DVD')),
+        );
+        
+        $returnData = array();
+		if($result && is_array($result) && count($result)>0){
+			
+			foreach($result as $data){
+                $projectData['data'] = $data;
+				$returnData[]=$this->load->view('landingpage/media_listing',$projectData,true);
+			}
+		}
+		echo  json_encode($returnData);	
+	}
+    
+	function landingPageNews(){	
+		$userId=0;
+		$orderby='elementId';
+		$elementOrderBy='modifyDate';
+		$order='DESC';
+		$fetchElementFields = '';
+		
+		$industryType = $this->config->item('FV');
+		$industryKey = $this->config->item('FVTYPE');
+		
+		$entityId = getMasterTableRecord('NewsElement');
+		
+		$limit = $this->input->post('limit');
+		$limit = is_numeric($limit) ? $limit : 10;
+		$offset = $this->input->post('offset');
+		$offset = is_numeric($offset) ? $offset : 0;
+		
+		$result= $this->model_common->getProjectElements($userId,$this->config->item('newsPrifix'),0,$orderby,$order,$fetchElementFields,$industryKey,$entityId,$limit,$offset);
+		$returnData = array();
+		if($result && is_array($result) && count($result)>0){
+			foreach($result as $data){
+				$returnData[]=$this->load->view('landingpage/news_listing',array('data'=>$data), true);
+			}
+		}
+		echo  json_encode($returnData);	
+	}
+	
+	function landingPageReviews(){	
+		$userId=0;
+		$orderby='elementId';
+		$elementOrderBy='modifyDate';
+		$order='DESC';
+		$fetchElementFields = '';
+		
+		$industryType = $this->config->item('FV');
+		$industryKey = $this->config->item('FVTYPE');
+		
+		$entityId = getMasterTableRecord('ReviewsElement');
+		
+		$limit = $this->input->post('limit');
+		$limit = is_numeric($limit) ? $limit : 10;
+		$offset = $this->input->post('offset');
+		$offset = is_numeric($offset) ? $offset : 0;
+		
+		$result= $this->model_common->getProjectElements($userId,$this->config->item('reviewsPrifix'),0,$orderby,$order,$fetchElementFields,$industryKey,$entityId,$limit,$offset);
+		$returnData = array();
+		if($result && is_array($result) && count($result)>0){
+			foreach($result as $data){
+				$returnData[]=$this->load->view('landingpage/reviews_listing',array('data'=>$data), true);
+			}
+		}
+		echo  json_encode($returnData);	
+	}
+	
+	function landingPageUpcoming(){	
+		$industryType = $this->config->item('FV');
+		$industryKey = $this->config->item('FVTYPE');
+		
+		$limit = $this->input->post('limit');
+		$limit = is_numeric($limit) ? $limit : 10;
+		$offset = $this->input->post('offset');
+		$offset = is_numeric($offset) ? $offset : 0;
+		
+		$result= $this->model_common->getUpcomingProjects($industryId=1,$projUpType=0,$limit,$offset);
+		$returnData = array();
+		if($result && is_array($result) && count($result)>0){
+			foreach($result as $data){
+				$returnData[]=$this->load->view('landingpage/upcoming_listing',array('data'=>$data,'frontendMathod'=>'filmvideo'), true);
+			}
+		}
+		echo  json_encode($returnData);	
+	}
+	
+	private function search_nested_arrays($array, $key){
+		if(is_object($array))
+			$array = (array)$array;
+	   
+		// search for the key
+		$result = array();
+		foreach ($array as $k => $value) {
+			if(is_array($value) || is_object($value)){
+				$r = $this->search_nested_arrays($value, $key);
+				if(!is_null($r))
+					array_push($result,$r);
+			}
+		}
+	   
+		if(array_key_exists($key, $array))
+			array_push($result,$array[$key]);
+	   
+	   
+		if(count($result) > 0){
+			// resolve nested arrays
+			$result_plain = array();
+			foreach ($result as $k => $value) {
+				if(is_array($value))
+					$result_plain = array_merge($result_plain,$value);
+				else
+					array_push($result_plain,$value);
+			}
+			return $result_plain;
+		}
+		return NULL;
+	}
+	
+	
+}
+
+/* End of file frontend.php */
+/* Location: ./application/module/frontend/frontend.php */

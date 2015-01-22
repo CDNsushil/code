@@ -1,0 +1,138 @@
+/* root element should be positioned relatively so that
+    child elements can be positioned absolutely */
+body{
+    margin:0px;
+    padding:0px;
+}
+
+.hulu {
+	position: relative;
+	height: 88px;
+	border: 1px solid #e7e7e7;
+	/* black background with a gradient */
+	background: #f7f7f7;
+	width: 321px;
+	padding: 4px 2px 6px 7px;
+    font-family:arial;
+    font-size:14px;
+    color:#444;
+}
+.hulu .time {
+	padding: 10px 13px 0px;
+	text-align: right;
+	font-size: 14px;
+	color: #444;
+	font-family: arial;
+	width: auto;
+	float: right;
+	
+	right: 0;
+	z-index: 9;
+}
+.hulu .play:hover {
+	background-position: 10px -105px;
+}
+/* pause state */
+.hulu .pause {
+	background: url(player_1.png) no-repeat -217px 0px;
+	float: left;
+	width: 60px;
+	height: 45px;
+}
+.play_wrap a {
+	margin-top: 8px;
+	padding: 0 6px 0 0px;
+	cursor: pointer;
+}
+/* the timeline (or "scrubber")  */
+.hulu .track {
+	position: absolute;
+	cursor: pointer;
+	width: 321px;
+	height: 7px;
+	background: #444;
+	left: 7px;
+	z-index: 11;
+}
+/* the draggable playhead */
+.hulu .playhead {
+	position: absolute;
+	cursor: pointer;
+	background-color: #f7f7f7;
+	width: 1px;
+	height: 7px;
+}
+.play_wrap {
+	background: #ffffff;
+	height: 58px;
+	margin-top: 30px;
+	width: 264px;
+	font-size: 0px;
+	padding-left: 53px;
+}
+/* buffer- and progress bars. upon runtime the width of these elements grows */
+.hulu .progress, .hulu .buffer {
+	position: absolute;
+	background-color: #ff6500;
+	width: 0px;
+	height: 7px;
+}
+.hulu .buffer {
+	background-color: #fff;
+	opacity: 0.1;
+	filter: alpha(opacity=10);
+}
+/* time display */
+
+/* total duration in time display */
+.hulu .time strong {
+	font-weight: normal;
+	color: #666;
+}
+/* mute / unmute buttons */
+.hulu .mute, .hulu .unmute {
+	display:none;
+}
+.player_btn, .hulu .play {
+	background: url(player_1.png) no-repeat left center;
+	height: 45px;
+	float: left;
+}
+.player_btn:hover {
+	background: url(player_1_hover.png) no-repeat left center;}
+.prev.player_btn {
+	background-position: 0 0;
+	width: 40px;
+}
+.Next.player_btn {
+	background-position: -110px 0;
+	width: 40px;
+}
+.hulu .play, .hulu .play:hover {
+	width: 60px;
+	background-position: -47px center;
+	float: left
+}
+.stop.player_btn { background-position:-160px 0 ; width:40px;}
+.trackname { padding:10px 0 0px; float:left;}
+.myplayer{ height: 1px; visibility:hidden;width:1px;}
+
+.player_btn {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*---no media found css--*/        
+
+.fl {float: left;}
+.fr {float: right;}
+.font_size18 {font-size: 18px !important;}
+.clr_white {color: #FFFFFF!important;}
+.mt20 {margin-top: 20px!important;}
+.mt10 {margin-top: 10px!important;}
+.mr30 {margin-right: 30px!important;}
+.nomediafound_bg{ background:#444444; border-radius:4px 4px 4px 4px; height:60px;  padding-left:40px;}

@@ -1,0 +1,108 @@
+/** This css only for membership modules */
+/* */
+
+ul li
+{
+	list-style:none;
+	min-height: 16px;
+}
+.add_btn {
+	float:right;
+	margin-right: 22px;
+}
+.width500{
+	width:500px;
+}
+.width300{
+	width:300px !important;
+}
+.width251{
+	width:251px !important;
+}
+.sign_up_div{
+	position: absolute;
+	margin: -34px 0px 0px 230px;
+}
+.img_outer{
+	width: 134px;
+	height: 164px;
+	float: left;
+	background-color: #c4c4c4;
+	margin: 0px 14px 15px 5px;
+	overflow: hidden;
+}
+.banner_div{
+	text-align: center;
+	margin-top: -13px;
+	font-weight: bold;
+}
+.source_code
+{
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+	height: 166px;
+}
+.copy_div
+{
+	margin-left: 67px;
+	margin-bottom: 8px;
+}
+.source_head{
+	padding: 60px 0px 4px 8px;
+	font-weight: bold;
+}
+.copy_msg{
+	font-weight:bold;
+}
+p
+{
+	padding:10px;
+}
+section.post form .payment_mode input {
+	margin: 2px 10px 0 0;
+}
+.config ul li{
+	width:300px;
+}
+.text_center{
+	text-align: center;
+}
+.referral_point{
+	margin-left: -21px;
+}
+.pending_btn{
+	width:134px;
+}
+.ui-widget-content {
+	z-index:9999 !important;
+}
+ul.email_contact li{
+	border:1px solid #c4c4c4;
+	border-top:none;
+}
+ul.email_contact{
+	margin-left: -39px;
+}
+ul.email_contact li{
+	padding:5px;
+	cursor:pointer;
+}
+i.fa.fa-envelope.fa-stack-1x {
+	margin-top: -2px;
+}
+.color_red{
+	color:#FC0B03 !important;
+	opacity: 1;
+}
+li.rs_payout.request.active_nav {
+	font-size:12.8px !important;
+}
+.add_loader{
+	background: url(../img/loader.gif) no-repeat center center;
+	height: 30px;
+	display:none;
+}
+.selectContact{
+	background:#E8E8E8;
+}
+

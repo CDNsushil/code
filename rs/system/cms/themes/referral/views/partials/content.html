@@ -1,0 +1,142 @@
+<?php   //to show error 
+
+	$form=get_instance()->uri->segment(2); 	
+	$form=ucwords(str_replace("-"," ",$form)); 
+	$form=str_replace(" ","-",$form);
+	//to revent browser chache
+	preventBrowserCache();
+	?>
+
+<!--to check home form -->
+ <?php $module_name=module_name(); ?>
+ <?php $home=is_home(); ?>
+	<?php if($home):?>
+		<div class="slider_wrapper">
+			<div class="container_inner">
+				<div id="main_slider" class="carousel slide" data-ride="carousel">
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner">
+					<div class="item active">
+					  <div class="carousel-caption">
+						<h1>See Syrecohk in Action!</h1>
+						<p>Take a tour of the softwareand see<br/> how easy it is to get started.</p>
+						<!--<a href="#" class="btn slide_btn medium_btn">View Slideshow<i class="fa fa-arrow-right"></i></a> -->
+					  </div>
+					</div>
+					<div class="item">
+					  <div class="carousel-caption">
+						<h1>See Syrecohk in Action!</h1>
+						<p>Take a tour of the softwareand see<br/> how easy it is to get started.</p>
+						<!--<a href="#" class="btn slide_btn medium_btn">View Slideshow<i class="fa fa-arrow-right"></i></a> -->
+					  </div>
+					</div>
+				  </div>
+				
+				  <!-- Controls -->
+				  <a class="left carousel-control" href="#main_slider" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				  </a>
+				  <a class="right carousel-control" href="#main_slider" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				  </a>
+				</div>
+				<!--end of slider-->    
+			</div>
+		</div>
+    <!--end of slider wrapper-->
+    <?php else: ?>
+    
+    	
+ <div class="row page_heading">
+    	<div class="container_inner">
+            <div class="col-lg-12">
+            	<!--/MAIN TITTLE OF THE PAGE/-->
+                <div class="main_tittle">
+				<?php
+				//get user group name
+				
+				echo getGroupName();
+				
+				?>
+               
+                </div>
+                <!--/END OF MAIN TITTLE/-->
+            </div>    
+         <div class="clearfix"></div>       
+        </div>
+        <!--/END OF CONTAINER/-->
+    </div>
+	<?php endif;?>
+	
+<div class="content_wrapper">
+    	<div class="container_inner">
+			<div class="col-md-12 padding15">
+			 <div class="row">
+				<?php if($module_name!='Services'): ?>
+				<div class="col-sm-12">
+					<?php echo  create_breadcrumb();?>
+				<!--/END BREADCUMBS/-->
+				</div>
+				</div>
+				<?php endif; ?>
+                     <!--/END ROW/-->
+                    
+                    <div class="clearfix"></div>
+                    
+                    <!--/ROW FOR SIDE BAR CONTENTS/-->
+                    <div class="row">
+						 <?php  if($module_name!='Users' || $form!='Testimonial' ):   
+						    if($module_name!='Services' && $form!='Dashbord' ):   echo getSidebar(); endif; 
+						   
+						   endif; ?>
+						{{ if theme:options:layout == 'full-width' OR ( theme:options:layout == 'full-width-home' AND page:is_home == true ) }}
+						<!-- End full width content -->
+
+						{{ else }}
+							<!-- End 2 column content -->
+							{{ theme:partial name="sidebar" }}
+						{{ endif }}
+						{{ if theme:options:layout == 'full-width' OR ( theme:options:layout == 'full-width-home' AND page:is_home == true ) }}
+							<!-- Begin full width content -->
+
+						{{ else }}
+							<!-- Begin 2 column content -->
+
+						{{ endif }}
+
+								{{ template:body }}
+				
+				  <div class="clearfix"></div>				
+		   </div>
+        <!--end of inner row-->
+				 <div class="clearfix"></div>
+          </div>
+        <!--end of col-md-12-->
+     </div>
+        <!--end of container inner-->
+   </div>
+    <!--end of content wrapper-->
+    <div class="supportChat">Live Chat</div>
+    <div id="chatContainer">
+
+    <div id="chatTopBar" class="rounded"><a class="logoutButton rounded" href="">X</a></div>
+    <div id="chatLineHolder"></div>
+    
+    <div id="chatBottomBar" class="rounded">
+    	<div class="tip"></div>
+        
+        <form id="loginForm" method="post" action="">
+            <input id="name" name="name" class="rounded" maxlength="16" />
+            <input id="chat_email" name="email" class="rounded" />
+            <input type="submit" class="blueButton" value="Login" />
+        </form>
+        
+        <form id="submitForm" method="post" action="">
+            <input id="chatText" name="chatText" class="rounded" maxlength="255" autocomplete="off"/>
+           <!-- <input type="submit" class="blueButton" value="Submit" /> -->
+        </form>
+        
+    </div>
+    
+</div>
+   

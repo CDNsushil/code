@@ -1,0 +1,215 @@
+@media screen and (max-width: 1019px) {
+.scrollxs{ overflow:hidden; overflow-x:auto;}
+#example_wrapper .entriesTables .enrtyFeild, .searchFeild, .ShowingEntries, .Paginations{ float:left;}	
+.marginb10 {
+	margin: 0 0 10px 0;
+}
+.circle_tile {
+	margin-bottom: 15px;
+	text-align: center;
+}
+.container_inner {
+	width: 96%;
+}
+#main_nav .navbar-nav > li > a {
+	margin-right: 25%;
+}
+.affiliated_ul li {
+	min-width: 50%;
+}
+}
+ @media screen and (max-width: 979px) {
+.scrollxs{ overflow:hidden; overflow-x:auto;}
+#example_wrapper .entriesTables .enrtyFeild, .searchFeild, .ShowingEntries, .Paginations{ float:left;}	
+.marginb10 {
+	margin: 0 0 10px 0;
+}
+.circle_tile {
+	margin-bottom: 15px;
+	text-align: center;
+}
+#logo_wrapper h1 {
+	line-height: 55px;
+}
+.nav_wrapper {
+	padding-top: 45px;
+	position: relative;
+}
+.lns_wrapper {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.lns_wrapper .login, .lns_wrapper .signup {
+	margin-top: 10px;
+}
+#main_nav .navbar-nav > li > a {
+	line-height: 50px;
+}
+.affiliated_img img {
+	max-width: 110%;
+}
+.box_wrapper {
+	padding-left: 6%;
+	padding-right: 6%;
+	width: 96%;
+}
+.nav_wrapper nav.navbar {
+	float: right;
+}
+.carousel-caption {
+	padding-left: 0;
+	width: 80%;
+}
+}
+@media screen and (max-width: 767px) {
+.scrollxs{ overflow:hidden; overflow-x:auto;}
+#example_wrapper .entriesTables .enrtyFeild, .searchFeild, .ShowingEntries, .Paginations{ float:left;}	
+.marginb10 {
+	margin: 0 0 10px 0;
+}
+.circle_tile {
+	margin-bottom: 15px;
+	text-align: center;
+}
+.margin20 {
+	margin-top: 20px;
+}
+#logo_wrapper {
+	float: left;
+}
+#main_nav {
+	background: none repeat scroll 0 0 #F2F2F2;
+	margin-left: -2%;
+	margin-right: -2.4%;
+	padding-left: 2%;
+	padding-right: 2%;
+	position: absolute;
+	right: 0;
+	width: 105%;
+	z-index: 999;
+}
+nav.navbar {
+	width: 100%;
+}
+ul.nav.navbar-nav {
+	display: inline-block;
+	margin: 0;
+	width: 100%;
+}
+#main_nav .navbar-nav > li > a {
+	border-bottom: 1px solid #DEDEDE;
+	line-height: 30px;
+	margin: 0;
+	padding: 2px 10px;
+	text-align: center;
+}
+.affiliated_img {
+	text-align: center;
+}
+.affiliated_img img {
+	margin-bottom: 15px;
+	margin-top: 0;
+}
+.affiliate_signup {
+	padding: 0;
+}
+.col2_wrapper > div.col-sm-6 {
+	float: left;
+	width: 50%;
+}
+.carousel-control {
+	z-index: 10;
+}
+}
+ @media screen and (max-width: 639px) {
+.scrollxs{ overflow:hidden; overflow-x:auto;}
+#example_wrapper .entriesTables .enrtyFeild, .searchFeild, .ShowingEntries, .Paginations{ float:left;}	
+.marginb10 {
+	margin: 0 0 10px 0;
+}
+.circle_tile {
+	margin-bottom: 15px;
+	text-align: center;
+}
+.btn.giant_btn {
+	font-size: 26px;
+	max-width: 96%;
+	padding-left: 3%;
+	padding-right: 3%;
+}
+.col2_wrapper > div.col-sm-6 {
+	float: none;
+	margin: auto auto 20px;
+	width: 90%;
+}
+.box_wrapper h2, .box_wrapper > p {
+	height: auto !important;
+	min-height: 5px;
+}
+.carousel-caption {
+	width: 90%;
+	left: 5%;
+}
+.carousel-control .icon-prev, .carousel-control .glyphicon-chevron-left {
+	left: 10%;
+}
+.carousel-control .icon-next, .carousel-control .glyphicon-chevron-right {
+	right: 10%;
+}
+.footer_links {
+	text-align: center;
+}
+}
+ @media screen and (max-width: 479px) {
+.scrollxs{ overflow:hidden; overflow-x:auto;}
+#example_wrapper .entriesTables .enrtyFeild, .searchFeild, .ShowingEntries, .Paginations{ float:left;}	 
+
+.marginb10 {
+	margin: 0 0 10px 0;
+}
+.circle_tile {
+	margin-bottom: 15px;
+	text-align: center;
+}
+.container_inner {
+	width: 94%;
+}
+.slider_wrapper {
+	background: url("../images/slider_back.jpg") no-repeat scroll center top rgba(0, 0, 0, 0);
+	min-height: 350px;
+}
+.carousel-inner {
+	overflow: visible;
+}
+.slider_wrapper .carousel-inner > .item {
+	height: auto;
+	min-height: 200px;
+}
+.carousel-caption {
+	bottom: auto;
+}
+.carousel-caption > h1 {
+	font-size: 32px;
+}
+.carousel-caption p {
+	font-size: 22px;
+	line-height: 30px;
+	margin-bottom: 40px;
+}
+.carousel-caption p br {
+	display: none;
+}
+.affiliated_content h1 {
+	font-size: 28px;
+}
+.affiliated_content h3 {
+	font-size: 20px;
+}
+.affiliated_ul li {
+	width: 100%;
+}
+.btn.giant_btn {
+	font-size: 18px;
+}
+}
