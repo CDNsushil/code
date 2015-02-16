@@ -1,1 +1,0 @@
-Uninstalling this plugin will delete all created Video banners as well as delete the statistics data. All your Video ads / VAST related data will be LOST. 

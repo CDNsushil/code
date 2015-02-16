@@ -1,1 +1,0 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="checkdirpermissions.aspx.cs" Inherits="checkdirpermissions" %>
