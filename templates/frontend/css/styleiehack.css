@@ -1,0 +1,87 @@
+@charset "utf-8";
+/* CSS Document */
+
+.profileieimg{ float:left; width:154px;}
+.proreco_img{ float:left; width:94px;}
+.media_img{ float:left; width:408px;}
+.mediacontainer_img{ float:left; width:105px;}
+.transapremt_bottom{ background:url(../images/homebottomtransparent_img.png) repeat; border:solid 1px #7a7a7a;}
+.growbg{background:url(../images/homebottomtransparent_img.png) repeat;}
+.blog_project_box{ border:solid 1px #c1c1c1;}
+.bdr_Rgrey20per{ border-right:solid 1px #e2e0dd;}
+.wp_project_box{ border:solid 1px #e2e0dd;}
+.bdr_Borange{ border-bottom:solid 1px #eda086;}
+
+/* -------------------- home style -----------*/
+.scrollingdiv .inner{ background-color:#ffffff !important;}
+.BdrW_trans{ border:solid 1px #ffffff !important;}
+.wp_new_box{ border:solid 1px #c1c1c1;}
+.AI_table{ border-collapse:collapse !important; }
+
+
+/*------------------------ stykle for images center-------------------*/
+.wp_project_thumb .AI_table{border-collapse:collapse !important;}
+.wp_project_thumb .AI_cell{ height:83px; width:105px; float:left;}
+
+.AI_cell{ float:left;}
+.wp_news_thumb .AI_cell{height: 96px; width: 138px;}
+.wp_news_thumb_right .AI_cell{height: 107px; width: 171px;}
+.wp_project_thumb .AI_cell{height: 83px;width: 105px;}
+.wp_blog_profile_img .AI_cell{height: 84px; width: 84px;}
+
+
+/*-------------------- style for showcsae blog page -----------------*/
+.recent_thumb_PApage .AI_cell{height:58px;width: 68px; padding-top:4px;}
+
+/*-------------------- style for showcsae upcoming page -----------------*/
+.up_gallery_thumb_box .AI_cell{height:151px;width:202px;}
+.recent_thumb01 .AI_cell{height: 60px;width: 44px;}
+.tabs_RShowcase span{float:left; line-height:36px !important;  }/* for tab */
+.intro_media_thumb .AI_cell{ width:165px; height:168px; vertical-align:middle !important;}
+
+/*-------------------- style for showcsae film video page -----------------*/
+.FV_top_big_video .AI_cell{ height: 305px;width: 408px;}
+
+/*-------------------- style for showcsae music audio page -----------------*/
+.SMA_thumb .AI_cell{height: 147px;width: 147px;}
+
+/*-------------------- style for wp tnews page -------------------- */
+.wp_topimg_thumb .AI_cell{height: 160px;width: 107px;}
+.thumb_small .AI_cell{ height:31px; width:31px;}
+.blog_profile_img .AI_cell{ height:84px; width:84px;}
+
+/*-------------------- style for eventN_thumbnail page -------------*/
+.eventN_thumbnail .AI_cell{ height:208px; width:135px; top:46px !important; position:absolute;}
+.eventN_thumbnail .AI_cell img{ vertical-align:middle;}
+
+/*----------------- style for Educational Material -----------------*/
+.EM_main_thumb .AI_cell{width: 206px;height: 174px;}
+
+/*------------------------ crave result img box -------------------*/
+.crave_result_img_box .AI_cell{height: 215px;width: 336px;}
+.tabs_RShowcase .width100px{ width:90px !important;}
+.scroll_box .width_116 .AI_cell{ width:116px;}
+.eventL_box .Normalevent_Date{ float:left !important; width:100% !important;}
+
+.innershadw_member .AI_cell{ width:130px;}
+.search_result_list_gradient .AI_cell{height: 167px;width: 167px;}
+.buyer_cmtboxbg .width68{width:48px;}
+.buyer_cmtboxbg .width295 .width_90 .AI_cell{ width:90px;}
+
+
+/*-------------------dashboard style ---------------------- */
+.lhsleft_imgbg .AI_cell{height: auto; width: 154px;}
+.dash_link_shedow .AI_cell{ width:73px; height:110px;}
+.rouncircle_dastboard .AI_cell{ float:inherit !important;}
+.dash_Atool_leftbox .AI_cell{ width:100px;}
+.ver_contact_user_pic_box td{ float:left; height:41px; width:41px;}
+.memleftimgcon .AI_cell{ width:130px !important;}
+.innershadw_member .AI_cell { width:157px;}
+
+/*------------------ date 30-4-2013 --------------*/
+.dash_Atool_list_box .width_82 .AI_cell{ width:82px !important;}
+
+.worpsliderbg .bannerleftimgbg .AI_table .AI_cell{ height:260px; width:285px; float:inherit;}
+
+.worpsliderbg .bannerPEbg .AI_table .AI_cell{ float:inherit !important;}
+.worpsliderbg .bannerEMbg .AI_table .AI_cell{ float:inherit !important;}

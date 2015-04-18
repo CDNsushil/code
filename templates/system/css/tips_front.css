@@ -1,0 +1,143 @@
+@charset "utf-8";
+/* CSS Document */
+@import url('../font/font.css');
+
+body {
+	font-size:12px;
+	line-height:18px;
+	color:#676767;
+	background:#1f1d1d url(../images/bg.jpg) top center repeat !important;
+	
+}
+
+a {
+	color:#5c5c5c;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+a:hover {
+}
+
+.content_wrapper {
+	background: url(../images/body_shadow_strip.png) repeat-y;
+	padding:0 20px;
+	height:auto;
+}
+
+
+.forumbox_sheadow{-webkit-box-shadow:  3px 3px 3px 0px rgba(0, 0, 0, .18);
+        box-shadow:  3px 3px 3px 0px rgba(0, 0, 0, .18);}
+
+
+.height_26{ height:26px !important;}
+
+.aerrow_forum{ background: url("../images/arrow_archive.png") repeat scroll -7px -10px transparent; height:13px; width:7px;
+float:right; margin-top:5px; margin-left:15px;
+}
+
+.bg_373737{ background:#373737 !important;}
+.bdrB_6e6e6e{ border-bottom:solid 1px #6e6e6e;}
+
+
+.categordbtnline{ background:url(../images/category_btm.png) no-repeat scroll left bottom transparent; line-height:42px; text-indent:26px}
+
+
+/* --------------------- style sheet for forum tips-pages.html---------------------*/
+
+.container_tipshelp { display: table; }
+.container_tipshelp .tops_row { display: table-row;  }
+.container_tipshelp .tops_row .panel { display: table-cell;color:#fff;vertical-align:top;}
+.mt-10{ margin-top:-10px !important;}	
+		
+.helptipslist_box {
+    height: auto;
+   /*font-family: 'MuseoSlab-500' !important;*/
+}
+
+
+.helptipslist_box {
+   /*font-family: 'MuseoSlab-500' !important;*/
+}
+.font_museoslab{
+font-family: 'MuseoSlab-500' !important;
+}
+
+/*.helptipslist_box ul li{
+	line-height:40px;
+	font-family: 'MuseoSlab-500' !important;
+}*/
+.helptipslist_box ul li{
+	background-image:url("../images/arrow_archive.png") ;
+	background-position: 3px -4px;
+    background-repeat: no-repeat;
+    padding-left: 24px;
+/*line-height:40px;
+min-height:40px;*/
+}
+
+/*.helptipslist_box ul li a{ background: url("../images/arrow_archive.png") no-repeat scroll 8px 4px transparent;
+    display: block;
+	font-family: 'MuseoSlab-500' !important;
+	font-size:15px;
+	color:#ffffff;
+    text-indent: 32px;}*/
+ .helptipslist_box ul li a{ background: url("../images/arrow_archive.png") no-repeat scroll 8px 4px transparent;
+    display: block;
+	font-family: 'MuseoSlab-500';
+	font-size:15px;
+	color:#ffffff;
+	line-height:21px;
+  /*  text-indent: 32px;*/
+}  
+   
+    
+ .helptipslist_box ul li a{color:#ffffff;}
+.helptipslist_box ul li a:hover{color:#FFB097;}
+.helptipslist_box ul li a span{color:#FFB097; display:inline;font-style: italic;}
+.helptipslist_box ul li a span:hover{color:#ffffff;}
+.helptipslist_box ul li a:hover span{ color:#ffffff;}
+
+.pl18{ padding-left:18px !important;}
+
+	
+.helptipslist_box ul li span{ display:inline; color:#f15921;}
+.pl28{ padding-left:28px !important;}
+.pr28{ padding-right:28px !important;}
+.width_474{ width:474px !important;}
+
+.discriptioul{ height:auto;}
+.discriptioul ul{ list-style:none; margin-left:40px;}
+.discriptioul li{
+	list-style-type:disc;
+	padding-right:20px;
+	padding-left:16px;
+	}
+.lineH18{ line-height:18px !important;}
+
+.tips_shedow{text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.22); line-height: 21px;}
+.clr_733737{ color:#733737 !important;}
+.bdrt_e5e5e5{ border-top: solid 1px #e5e5e5 !important}
+.bdrb_e5e5e5{ border-bottom: solid 1px #e5e5e5 !important}
+.clr_222{ color:#222222 !important;}
+.categordbtnline{ background:url(../images/category_btm.png) no-repeat scroll left bottom transparent; line-height:42px; text-indent:26px}
+.tipshelp_btmline{ background:url(../images/tipshelpbottomline.png) no-repeat scroll left bottom transparent; line-height:42px; text-indent:26px}
+.width_385{ width:385px !important;}
+.right_436{right:436px !important;}
+.tips_desc p{
+	font-family: 'OpenSansRegular' !important;
+	font-size: 13px;
+	color: #222222 !important;
+}
+.tips_desc a{
+	font-family: 'OpenSansRegular' !important;
+	font-size: 13px;
+	color: #222222 !important;
+}
+.tips_desc ul li{
+	font-family: 'OpenSansRegular' !important;
+	font-size: 13px;
+	color: #222222 !important;
+	padding-left: 16px !important;
+}
+

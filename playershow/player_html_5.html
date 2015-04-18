@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+
+   <!-- player skin -->
+   <link rel="stylesheet" type="text/css"
+      href="//releases.flowplayer.org/5.5.2/commercial/skin/minimalist.css">
+   
+   
+   <style>
+   /* site specific styling */
+   body {
+      font: 12px "Myriad Pro", "Lucida Grande", "Helvetica Neue", sans-serif;
+      text-align: center;
+      padding-top: 1%;
+      color: #999;
+      background-color: #080606;
+   }
+
+   /* custom player skin */
+   .flowplayer { width: 80%; background-color: #222; background-size: cover; max-width: 800px; }
+   .flowplayer .fp-controls { background-color: rgba(0, 0, 0, 0.4)}
+   .flowplayer .fp-timeline { background-color: rgba(3, 0, 0, 0.5)}
+   .flowplayer .fp-progress { background-color: rgba(255, 100, 10, 1)}
+   .flowplayer .fp-buffer { background-color: rgba(249, 249, 249, 1)}
+   .flowplayer { background-image: url(https://farm4.staticflickr.com/3169/2972817861_73ae53c2e5_b.jpg)}
+
+   </style>
+
+   <!-- flowplayer depends on jQuery 1.7.2+ -->
+   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
+   <!-- flowplayer javascript component -->
+   <script src="//releases.flowplayer.org/5.5.2/commercial/flowplayer.min.js"></script>
+   
+
+</head>
+
+<body>
+
+   <p>Video dimensions won't probably match your player</p>
+
+   <div data-swf="//releases.flowplayer.org/5.5.2/commercial/flowplayer.swf"
+      class="flowplayer no-toggle play-button"
+       data-ratio="0.416" data-key="$943a9847a4c436aa438" data-logo="http://toadsquare.com/images/logo-tod-square.png" data-embed="false" data-fullscreen="false">
+        <video>
+            <source type="video/mp4" src="dummy_video.mp4">
+        </video>
+      
+   </div>
+
+</body>
+</html>

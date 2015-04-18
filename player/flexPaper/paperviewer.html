@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script type="text/javascript" src="js/flexpaper_flash.js"></script>
+</head>
+
+<body>
+
+<div id="viewerPlaceHolder" style="width:100%; height:100%; position:absolute; top:0px; left:0px; margin:0px; padding:0px; border:0px solid #333333;"></div>
+
+
+<script type="text/javascript"> 
+				var fp = new FlexPaperViewer(	
+						 'FlexPaperViewer',
+						 'viewerPlaceHolder', { config : {
+						 SwfFile : escape('/tango.swf'),
+						 PDFFile : '/sample.pdf',
+						 Scale : 0.6, 
+						 ZoomTransition : 'easeOut',
+						 ZoomTime : 0.5,
+						 ZoomInterval : 0.2,
+						 FitPageOnLoad : true,
+						 FitWidthOnLoad : false,
+						 PrintEnabled : true,
+						 FullScreenAsMaxWindow : false,
+						 ProgressiveLoading : false,
+						 MinZoomSize : 0.2,
+						 MaxZoomSize : 5,
+						 SearchMatchAll : false,
+						 InitViewMode : 'Portrait',
+						
+
+						 
+						 ViewModeToolsVisible : true,
+						 ZoomToolsVisible : true,
+						 NavToolsVisible : true,
+						 CursorToolsVisible : true,
+						 SearchToolsVisible : true,
+  						
+  						 localeChain: 'en_US'
+						 }});
+	        </script>
+
+</body>
+</html>

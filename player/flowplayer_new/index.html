@@ -1,0 +1,43 @@
+<!doctype html>
+
+<head>
+
+   <!-- player skin -->
+   <link rel="stylesheet" href="skin/minimalist.css">
+
+   <!-- site specific styling -->
+   <style>
+   body { font: 12px "Myriad Pro", "Lucida Grande", sans-serif; text-align: center; padding-top: 5%; }
+   .flowplayer { width: 70%; }
+   </style>
+
+   <!-- flowplayer depends on jQuery 1.7.1+ (for now) -->
+   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+   <!-- include flowplayer -->
+   <script src="flowplayer.min.js"></script>
+
+</head>
+
+<body>
+
+   <!--
+      Please replace data-key value with your key that can be generated from
+
+      http://flowplayer.org/account/
+
+      Sample keys:
+
+      localhost  $289122895653393
+      127.0.0.1  $130388743137804
+      moot.it    $213037870481447
+   -->
+   <div class="flowplayer" data-swf="flowplayer.swf" data-key="$289122895653393" data-ratio="0.4167">
+      <video>
+         <source type="video/webm" src="http://stream.flowplayer.org/bauhaus.webm">
+         <source type="video/mp4"  src="http://stream.flowplayer.org/bauhaus.mp4">
+         <source type="video/ogv"  src="http://stream.flowplayer.org/bauhaus.ogv">
+      </video>
+   </div>
+
+</body>

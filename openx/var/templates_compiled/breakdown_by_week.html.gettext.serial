@@ -1,0 +1,40 @@
+a:6:{i:0;s:743:"function getImage() {
+
+       var imageLinkSrc      = document.getElementById('imageLinkSrc');
+       var imageLinkSrcTemp  = document.getElementById('imageLinkSrcTemp');
+
+       imageLinkSrc.style.display = 'none';
+       imageLinkSrcTemp.style.display = '';
+
+    }
+
+    function showGraph() {
+
+       var imgPath;
+       var imageLinkSrc      = document.getElementById('imageLinkSrc');
+       var imageLinkSrcTemp  = document.getElementById('imageLinkSrcTemp');
+       var graph             = document.getElementById('statsgraph');
+       var arrow             = document.getElementById('grapharrow');
+       var graphboxes        = document.getElementById('graphboxes');
+
+       if (graph.style.display == 'none') {
+
+            imgPath = '";i:1;s:284:"';
+
+            if(imgPath != imageLinkSrc.src) {
+                imageLinkSrcTemp.src = imgPath;
+                window.setTimeout('getImage()', 3000);
+            }
+
+            graph.style.display = 'block';
+            graphboxes.style.display = 'block';
+            arrow.src = '";i:2;s:150:"/triangle-d.gif';
+
+       } else {
+
+            graph.style.display = 'none';
+            graphboxes.style.display = 'none';
+            arrow.src = '";i:3;s:38:"/ltr/triangle-l.gif';
+
+        }
+    }";i:4;s:20:"myvar = showGraph();";i:5;s:12:"&nbsp;&nbsp;";}

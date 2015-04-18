@@ -1,0 +1,30 @@
+Array
+(
+    [0] => ffmpeg version 1.2 Copyright (c) 2000-2013 the FFmpeg developers
+    [1] =>   built on May  7 2013 15:11:41 with gcc 4.7 (Debian 4.7.2-5)
+    [2] =>   configuration: --enable-libmp3lame --enable-libvorbis --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libxvid --enable-pthreads --enable-gpl --enable-shared --enable-version3 --enable-libx264 --enable-nonfree --enable-libfaac
+    [3] =>   libavutil      52. 18.100 / 52. 18.100
+    [4] =>   libavcodec     54. 92.100 / 54. 92.100
+    [5] =>   libavformat    54. 63.104 / 54. 63.104
+    [6] =>   libavdevice    54.  3.103 / 54.  3.103
+    [7] =>   libavfilter     3. 42.103 /  3. 42.103
+    [8] =>   libswscale      2.  2.100 /  2.  2.100
+    [9] =>   libswresample   0. 17.102 /  0. 17.102
+    [10] =>   libpostproc    52.  2.100 / 52.  2.100
+    [11] => [mjpeg @ 0x85c2c0] mjpeg: error, decode_app parser read over the end
+    [12] => [mp3 @ 0x85aa20] max_analyze_duration 5000000 reached at 5016000 microseconds
+    [13] => [mp3 @ 0x85aa20] Estimating duration from bitrate, this may be inaccurate
+    [14] => Input #0, mp3, from '/var/www/toadsquare_branch/dev/queue/test_code/testing_file.mp3':
+    [15] =>   Metadata:
+    [16] =>     artist          : Kleerup + Lykke Li
+    [17] =>     encoded_by      : iTunes 10.5.3
+    [18] =>     album           : PatrickReza Remixes
+    [19] =>     title           : Until We Bleed (PatrickReza Remix)
+    [20] =>   Duration: 00:04:45.18, start: 0.000000, bitrate: 319 kb/s
+    [21] =>     Stream #0:0: Audio: mp3, 48000 Hz, stereo, s16p, 320 kb/s
+    [22] =>     Stream #0:1: Video: mjpeg, yuvj420p, 160x160, 90k tbr, 90k tbn, 90k tbc
+    [23] =>     Metadata:
+    [24] =>       title           : ÿØÿá$wExif
+    [25] =>       comment         : Other
+    [26] => At least one output file must be specified
+)

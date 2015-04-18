@@ -1,0 +1,10 @@
+---
+JobID: 6354
+Type: mp3
+Source: >
+  /var/www/toadsquare_branch/dev/media/08G0JKYh/project/musicNaudio/321/file/background_music.mp3
+Destination: >
+  /var/www/toadsquare_branch/dev/media/08G0JKYh/project/musicNaudio/321/file/converted/background_music.mp3
+Preview: >
+  /var/www/toadsquare_branch/dev/media/08G0JKYh/project/musicNaudio/321/file/converted/background_music_preview.mp3
+Added: 2014-12-04 12:42:01

@@ -1,0 +1,10 @@
+---
+JobID: 5743
+Type: wmv
+Source: >
+  /var/www/toadsquare_branch/dev/media/cGJC6m3G/workshowcase/Videos/p185d5fhvj12k410lj1be2ck8omd.wmv
+Destination: >
+  /var/www/toadsquare_branch/dev/media/cGJC6m3G/workshowcase/Videos/converted/p185d5fhvj12k410lj1be2ck8omd.mp4
+ThumbPath: >
+  /var/www/toadsquare_branch/dev/media/cGJC6m3G/workshowcase/Videos/
+Added: 2013-09-26 14:54:01

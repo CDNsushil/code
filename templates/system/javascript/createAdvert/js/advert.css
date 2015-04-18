@@ -1,0 +1,119 @@
+
+.middle_div_text {
+	background: #f8f8f8;
+	width: 160px;
+	border: 1px solid #ddd;
+	padding: 2px;
+	border-radius: 2px;
+	color: #111;
+	height: 125px;
+	left:50px;
+}
+
+.main_div {
+		border: 1px solid;
+		width: 250px;
+		height: 250px;
+		display:inline-block;
+		background-color:#f15c34;
+		overflow: hidden;
+ }
+
+   .p_show{
+	color:white;
+	height: 35px;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+	font-size:30px;
+	font-weight:normal;
+}
+
+
+body{
+	margin:0px
+	padding:0px;
+}
+
+#gradX {
+	height: 200px; 
+	padding-left:15px;
+	width:390px;
+} 
+ 
+
+
+.show_text{
+	text-align:center;
+}
+
+.color_heading{
+	width:60px;
+}
+
+.color_box{
+	width:60px;
+}
+
+.clear{
+	clear:both;
+}
+.form{
+	text-align:left;
+	padding-left:15px;
+}
+
+.form_filed{
+	font-size:18px;
+}
+.fl{
+	float:left;
+}
+
+.fr{
+	float:right;
+}
+.bg_red{
+	background-color:red;
+}
+.bg_pink{
+	background-color:pink;
+}
+.width_height_700{
+	width:560px;
+	height:600px;
+	border:2px solid #000;	
+}
+.dn{
+	display:none;
+}
+#gradx_show_code
+	{
+		display:none !important;
+	}
+	
+.img_filed{
+	 padding-top:5px;
+	}	
+	
+.file_browse_wrapper {
+width: 93px;
+height: 28px;
+background: url('file_browse_normal.png') 0 0 no-repeat;
+border:none;
+overflow:hidden;
+}
+.file_browse_wrapper:hover {
+background: url('file_browse_hover.png') 0 0 no-repeat;
+}
+.file_browse_wrapper:active {
+background: url('file_browse_pressed.png') 0 0 no-repeat;
+}
+.file_browse{
+margin-left:-145px;
+opacity:0;
+height: 30px;
+cursor: pointer;
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}	

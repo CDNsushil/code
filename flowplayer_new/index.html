@@ -1,0 +1,267 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- A minimal Flowplayer setup to get you started -->
+  
+
+	<!-- 
+		include flowplayer JavaScript file that does  
+		Flash embedding and provides the Flowplayer API.
+	-->
+	<script type="text/javascript" src="flowplayer-3.2.12.min.js"></script>
+	
+	<!-- some minimal styling, can be removed -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+	<!-- page title -->
+	<title>Minimal Flowplayer setup</title>
+
+</head><body>
+
+
+		
+
+		
+		<!-- this A tag is where your Flowplayer will be placed. it can be anywhere -->
+		<div id="player" style="display:block;width:500px;height:160px;background-color:'none';"  href="song6.mp3"></div>	
+        <div id="player1" style="display:block;width:500px;height:160px;background-color:'none';"  href="song6.mp3"></div>
+<!-- here is the content for the plugin -->
+
+	
+		<!-- this will install flowplayer inside previous A- tag. -->
+		<script>
+		var tortalplayer=new Array();
+		
+		function playtoggleaudio(val)
+		{
+			tortalplayer.push(val);
+		}
+		
+		function playaudio(val)
+		{
+			for(var i=0;i<tortalplayer.length;i++)
+			{
+				if(val==tortalplayer[i])
+				{
+					/*if(tortalplayer[i].isPaused())
+					{
+						tortalplayer[i].resume();
+					}
+					else
+					{
+						tortalplayer[i].play();
+					}*/
+				}
+				else
+				{
+					//alert(tortalplayer[i].isPlaying())
+					if(tortalplayer[i].isPlaying())
+					{
+						tortalplayer[i].pause();
+					}
+					else
+					{
+						tortalplayer[i].stop();
+					}
+				}
+			}
+		}
+			$f("player", "flowplayer.commercial-3.2.16.swf",{
+			
+			
+		key: '#$d777e0ef81a36136b1b',
+        plugins: {
+        controls: {
+		bottom: 0, left: 0, height: 30, width: "100%", zIndex: 2,
+      	 url:"flowplayer.controls-3.2.15.swf",
+        
+		timeColor: '#000000',
+		bufferColor:'#015B7A',
+		progressColor:'#6c9cbc',
+        height: 30,
+		left:true,
+	
+		autoPlay:true,
+        autoHide: false,
+		buttonColor:'#00000',
+		backgroundColor:'#EFEFEF',
+		tooltipColor:'#5f747c',
+		tooltipTextColor:'#000000',
+		buttonOverColor:'#000000',
+		
+	
+		
+	 	backgroundGradient: 'none',
+		
+		play: {
+      
+        x: 84,
+        y: 84,
+		
+		
+    },
+	
+				 logo: {
+						url: 'images.jpg',
+						//fullscreenOnly: false,
+						displayTime: 2000
+					},
+		
+		
+		tooltips:  {
+        // a shortcut for enabling tooltips for buttons (English)
+        buttons: true,
+ 
+        // customize the pause button text
+      //  pause: 'Continue playing',
+ 
+        // disable tooltips for the volume control
+        volume: null
+  		  },
+			
+
+
+
+		
+		  },
+
+      audio: {
+        url: 'flowplayer.audio-3.2.10.swf'
+      }
+    },
+ 	
+
+    clip: {
+      autoPlay: false,
+	  onPause: function() {
+            playaudio(this);
+        },
+		onResume: function() {
+                      playaudio(this);
+        },
+		onStart: function() {
+                       playaudio(this);
+        },
+    },
+	
+	onLoad: function() {
+     playtoggleaudio(this);
+    }
+	
+	
+  });
+
+
+	$f("player1", "flowplayer.commercial-3.2.16.swf", {
+ 
+    // listen to following clip events
+	 plugins: {
+        controls: {
+		bottom: 0, left: 0, height: 30, width: "100%", zIndex: 2,
+       
+        fullscreen: false,
+		timeColor: '#000000',
+		bufferColor:'#015B7A',
+		progressColor:'#6c9cbc',
+        height: 30,
+		left:true,
+	
+		autoPlay:true,
+        autoHide: false,
+		buttonColor:'#00000',
+		backgroundColor:'#EFEFEF',
+		tooltipColor:'#5f747c',
+		tooltipTextColor:'#000000',
+		buttonOverColor:'#000000',
+		
+	
+		
+	 	backgroundGradient: 'none',
+		
+		play: {
+      
+        x: 84,
+        y: 84,
+		
+		
+    },
+	
+		
+		
+		tooltips:  {
+        // a shortcut for enabling tooltips for buttons (English)
+        buttons: true,
+ 
+        // customize the pause button text
+      //  pause: 'Continue playing',
+ 
+        // disable tooltips for the volume control
+        volume: null
+  		  },
+			
+
+
+
+		
+		  },
+
+      audio: {
+        url: 'flowplayer.audio-3.2.10.swf'
+      }
+    },
+    clip: {
+		 autoPlay: false,
+         onPause: function() {
+          playaudio(this);
+        },
+		onResume: function() {
+                       playaudio(this);
+        },
+		onStart: function() {
+		playaudio(this);
+                       //alert('on Play');
+        },
+ 
+        // trigger this function on the 3rd and 8th second of playback
+        onCuepoint: [[3000, 8000], function(clip, point) {
+                      // alert('on cuepoint');
+        }]
+    },
+ 
+    // invoked when player loads (not a clip specific event) this.play()
+    onLoad: function() {
+                   playtoggleaudio(this);
+    },
+ 
+    // when volume level is altered
+    onVolume: function(level) {
+                alert('on volume');
+    },
+ 
+ 
+    // when playback is finished we are performing unload.
+    onFinish: function() {
+                   alert('on end');
+    }
+ 
+ 
+});
+
+
+
+
+		
+
+
+
+   </script>
+		
+		
+		<!-- 
+			after this line is purely informational stuff. 
+			does not affect on Flowplayer functionality 
+		-->
+        
+        
+        
+
+</body></html>

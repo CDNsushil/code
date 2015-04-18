@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <!-- Requirements -->
+  <test_pdf2swf>true</test_pdf2swf>
+  <test_pdf2json>true</test_pdf2json>
+
+  <!-- General Settings -->
+  <allowcache>true</allowcache>
+  <splitmode>false</splitmode>
+  <path.pdf>C:\inetpub\wwwroot\flexpaper\php\pdf\</path.pdf>
+  <path.swf>C:\inetpub\wwwroot\flexpaper\php\docs\</path.swf>
+
+  <!-- External Commands -->
+  <cmd.conversion.singledoc>pdf2swf.exe "{path.pdf}{pdffile}" -o "{path.swf}{pdffile}.swf" -f -T 9 -t -s storeallcharacters -s linknameurl</cmd.conversion.singledoc>
+  <cmd.conversion.splitpages>pdf2swf.exe "{path.pdf}{pdffile}" -o "{path.swf}{pdffile}%.swf" -f -T 9 -t -s storeallcharacters -s linknameurl</cmd.conversion.splitpages>
+  <cmd.searching.extracttext>swfstrings.exe "{path.swf}{swffile}"</cmd.searching.extracttext>
+  <cmd.conversion.renderpage>swfrender.exe "{path.swf}{swffile}" -p {page} -o "{path.swf}{pdffile}_{page}.png" -X 1024 -s keepaspectratio</cmd.conversion.renderpage>
+  <cmd.conversion.rendersplitpage>swfrender.exe "{path.swf}{swffile}" -o "{path.swf}{pdffile}_{page}.png" -X 1024 -s keepaspectratio</cmd.conversion.rendersplitpage>
+  <cmd.conversion.jsonfile>pdf2json.exe "{path.pdf}{pdffile}" -enc UTF-8 -compress "{path.swf}{pdffile}.js"</cmd.conversion.jsonfile>
+  <cmd.conversion.splitjsonfile>pdf2json.exe "{path.pdf}{pdffile}" -enc UTF-8 -compress -split 10 "{path.swf}{pdffile}_%.js"</cmd.conversion.splitjsonfile>
+</config>

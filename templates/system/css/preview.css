@@ -1,0 +1,380 @@
+@charset "utf-8";
+/* CSS Document */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, * {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-style: inherit;
+	font-family:Arial, Helvetica, sans-serif;
+	/*list-style:none;*/
+	
+}
+
+@font-face {
+    src: url('../fonts/gotham-book-webfont.eot');
+    src: url('../fonts/gotham-book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/gotham-book-webfont.woff') format('woff'),
+         url('../fonts/gotham-book-webfont.ttf') format('truetype'),
+         url('../fonts/gotham-book-webfont.svg#GothamBookRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+body{
+	font-size:12px;
+	line-height:18px;
+	color: #939598;
+	background:#bfbfbf;
+	height:100%;
+	color:#fff;
+	
+}
+
+.Main_wp{
+	width:992px;
+	background:url(../images/cont_bg.jpg);
+	height:auto;
+	margin:10px auto;
+	border:1px solid #9a9999;
+	-moz-box-shadow: 0 0 2px 2px #9a9999;
+-webkit-box-shadow: 0 0 2px 2px #9a9999;
+box-shadow: 0 0 2px 2px #9a9999;
+}
+
+.clear {
+	clear:both;
+	display:block;
+	width:100%;
+	height:0px;
+	line-height:0px;
+	font-size:0px;
+	
+}
+
+p{
+	margin:10px 0 10px 0;
+}
+
+.Left-panel{
+	width:819px;
+	float:left;
+	background:url(../images/line-strip.png) top right repeat-y;
+	padding:0 0px 0 0;
+	height:auto;
+
+}
+
+.left_content_box{
+	width:800px;
+	float:left;
+	height:auto;
+		 -moz-box-shadow:    inset 0 0 100px #272728;
+   -webkit-box-shadow: inset 0 0 100px #272728;
+   box-shadow:         inset 0 0 100px #272728;
+}
+
+.Right-panel{
+	width:173px;
+	float:left;
+	height:auto;
+}
+
+
+
+.Right-panel .add{
+	padding:166px 0 0 0;
+}
+
+.Header-wp{
+	width:100%;
+	height:65px;
+	position:relative;
+}
+
+.logo-box{
+	position:absolute;
+	width:190px;
+	height:auto;
+	top:25px;
+	left:20px;
+}
+
+
+.main-separetor{
+	background:url(../images/separator-img.png) center center no-repeat;
+	height:27px;
+	width:100%;
+}
+
+.Search-box-wp{
+	width:334px;
+	float:left;
+	height:31px;
+	padding:24px 0 0 25px;
+}
+
+.search-box{
+	float:left;
+	height:auto;
+	width:184px;
+}
+.Btn_search{
+	background:url(../images/Search-bg.png);
+	width:31px;
+	float:left;
+	height:31px;
+	cursor:pointer;
+}
+
+.inpt-search{
+	width:153px;
+	height:31px;
+	float:left;
+	border:0px;
+	background:url(../images/Search-bg.png) top center;
+	color:#fff;
+	line-height:30px;
+}
+
+.search-separator{
+	width:2px;
+	height:31px;
+	float:left;
+	padding:0 10px 0 10px;
+	background:url(../images/Search-bg.png) top center;
+}
+
+.search-separator img{
+	padding-top:9px;
+}
+
+/* for select box */
+
+.Search-box-wp .bg_sel{
+	background:url(../images/Search-bg.png) top right no-repeat;
+	height:31px;
+	width:128px;
+	position:relative;
+	float:left;
+}
+
+.Search-box-wp .abc{
+	position:absolute;
+	height:31px;
+	line-height:30px;
+	padding:0 0 0 10px;
+	color: #fff;
+	width:125px;
+	overflow:hidden;
+	float:left;
+	left:0;
+	
+}
+
+.Search-box-wp .bg_sel select {
+    border: 0 none;
+    color: #939598;
+    float: left;
+    height: 31px;
+    opacity: 0;
+    width: 128px;
+	filter:alpha(opacity="0");
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+.log-in-wp{
+
+	 /*margin-left:363px;
+	 float:left;*/
+	 position:absolute;
+	 right:75px;
+	 padding: 29px 0 0 23px;
+	 color:#b3b3b3;
+}
+
+.log-in-wp a{
+	 color:#b3b3b3;
+	 text-decoration:none;
+}
+
+.log-in-wp a:hover{
+	text-decoration:underline;
+}
+
+
+.icon-header-tv{
+	float:right;
+	padding:13px 17px 0 0px;
+}
+
+.right-inner-content{
+	margin:0 auto;
+	width:643px;
+	
+}
+
+.flower_heading{
+	 font-size:18px;
+	 padding:3px 0 0 0;
+}
+
+.posted_user_name{
+	font-size:14px;
+	height:32px;
+	line-height:32px;
+	color:#dadada;
+	padding:1px 0 0 0;
+}
+
+.video_player_wp{
+	background:url(../images/video-box-shadow.png) bottom center no-repeat;
+	padding:20px 0 36px 0;
+	position:relative;
+}
+
+.video_player_wp .bdr_1{
+	border:1px solid #969696;
+}
+.piece_wp{
+	height:auto;
+	padding:0 0 0 174px;
+	width:467px;
+	position:absolute;
+	bottom:-5px;
+}
+.piece{
+	float:left;
+	color:#5d5d5d;
+	
+}
+
+.player_btn_wp{
+	float:left;
+}
+
+.down_thumb_wp_shadow{
+	background:url(../images/video-box-shadow.png) bottom center no-repeat;
+	padding:32px 0 36px 0;
+	position:relative;
+}
+
+
+.down_thumb_wp_border{
+	border:1px solid #969696;
+	padding:10px;
+	background:#77787b;
+	width:620px;
+}
+
+.down_thumb_wrapper{
+	border:1px solid #969696;
+	background:url(../images/down_thumb_wrapper_bg.jpg);
+	width:610px;
+	padding:5px;
+	height: 137px;
+	
+}
+
+
+.down_thumb_box{
+	border:1px solid #969696;
+	float:left;
+	height:auto;
+	-moz-box-shadow:    2px 1px 4px  #000;
+   -webkit-box-shadow: 2px 1px 4px  #000;
+    box-shadow:        2px 1px 4px  #000;
+	margin:0 7px 0 0;
+	
+}
+
+.Video_rating_wp{
+	float:right;
+	height:auto;
+	padding:11px 0 0 0;
+}
+
+.rating_box{
+	float:left;
+	height:7px;
+	width:7px;
+	margin:0 4px 0 0;
+	background:#f1592a;
+}
+
+.Pagination_wp{
+	position:absolute;
+	bottom:-5px;
+	padding:0 0 0 240px;
+}
+
+.pagination_Previous{
+	float:left;
+	padding:0 8px 0 0;
+}
+
+.pagination_Previous a{
+	
+	color:#F1592A;
+	text-decoration:none;
+}
+
+.pagination_Next{
+	float:left;
+	padding:0 0 0 8px;
+}
+
+
+
+.paginaiton_box{
+	float:left;
+	width:15px;
+	text-align:center;
+	line-height:20px;
+	cursor:pointer;
+	background:url(../images/pagination_mid.png);
+	height:41px;
+	padding:0 0px 0 0;
+}
+
+.paginaiton_box a{
+	color:#fff;
+	text-decoration:none;
+}
+
+.paginaiton_box a:hover{
+	color:#F1592A;
+	text-decoration:underline;
+}
+
+
+.pagination_left{
+	float:left;
+	background:url(../images/pagination_left.png);
+	width:42px;
+	height:41px;
+	cursor:pointer;
+}
+
+.pagination_left a{
+	float:right;
+}
+
+.pagination_right{
+	float:left;
+	background:url(../images/pagination_right.png);
+	width:42px;
+	height:41px;
+	cursor:pointer;
+}
+.pagination_mid{
+	float:left;
+	background:url(../images/pagination_mid.png);
+	height:41px;
+	width:auto;
+	padding:0 0px 0 0;
+}
+#pagination .current{color:#f00;font-weight:bold;}

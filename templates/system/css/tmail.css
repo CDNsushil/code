@@ -1,0 +1,180 @@
+/* Content boxes: */
+
+.tmailBlock
+{
+	position: relative;
+	margin: 10px 0px;
+
+	background-color: #f8f8f8;
+	color: #2c2c2c;
+}
+
+.tmailBlock .block-header
+{
+	position: relative;
+	height: 27px;
+	background: transparent url("../images/background-header.jpg") repeat-x;
+	padding: 13px 18px 0px 18px;
+	color: #efefef;
+	font-size: 14.2px;
+	font-weight: 300;
+}
+
+.tmailBlock .block-header .block-collapse
+{
+	position: absolute;
+	top: 11px;
+	right: 18px;
+}
+
+#type-selector
+{
+	position: absolute;
+	top: 11px;
+	right: 100px;	
+}
+
+#type-selector a
+{
+	position: relative;
+	margin: 0px 10px;
+
+	color: white;
+	text-decoration: none;
+}
+
+.tmailBlock .block-main
+{
+	border: 1px solid #7d7d7d;
+	border-top: 0px;
+	padding: 10px;
+
+	font-size: 12px;
+}
+
+.block-main-table
+{
+	/*width: 100%;*/
+	margin-bottom: 20px;
+}
+
+.block-main-table th, .block-main-table td
+{
+	text-align: left;
+
+	padding: 3px 0px;
+
+	/*border-bottom: 1px solid #d7d7d7;*/
+}
+
+.noborder{
+border-bottom: none;
+}
+
+.block-main-table td.edit
+{
+	color: #ff5a00;
+}
+
+.block-main-table .icon-edit, .block-main-table .icon-cancel, .block-main-table .icon-settings
+{
+	margin-right: 5px;
+
+	cursor: pointer;
+	cursor: hand;
+}
+
+.tmailBlock .block-navigation
+{
+	font-size: 11.3px;
+}
+
+.tmailBlock .block-navigation a
+{
+	margin: 0px 5px;
+	color: #2c2c2c;
+}
+
+.tmailBlock .block-navigation .page
+{
+	height: 16px;
+	background-color: white;
+	padding: 0px 4px 0px 5px;
+
+	text-decoration: none;
+
+	border: 1px solid #2c2c2c;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+	-webkit-border-radius: 1px;
+}
+
+.tmailBlock .block-navigation .page.current
+{
+	background-color: #211e1e;
+	color: white;
+}
+
+.tmailBlock .button
+{
+	background-image: url("../images/button-background-blue.png");
+}
+
+.tmailBlock textarea
+{
+	border: 1px solid #b4b4b4;
+	min-height: 100px;
+	resize: none;
+}
+
+.tmailBlock #apply
+{
+	position: absolute;
+	bottom: 15px;
+	right: 20px;
+}
+.style4 {
+    color: #FFFFFF;
+}
+.tmailBlock a{
+	text-decoration: none;
+}
+#submenu a , .button a{
+    color: #FFFFFF;
+	font-weight:bold;
+	text-decoration: none;
+}
+.button {
+    background-repeat: repeat-x;
+    border: 0 none;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    height: 27px;
+    line-height: 27px;
+    text-align: center;
+    width: 77px;
+}
+.fildsetHeading {
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.borderBottom {
+    border-bottom: 1px solid #CCCCCC;
+}
+.selectTmailMenu{
+	background-image: url("../images/background-left-nav-hover.jpg");
+}
+.TmailMenu{
+	background-image: url("../images/background-tmail.jpg");
+}
+.TmailselectedMenu{
+border-right:5px #FF6666 solid; border-color:#FF6666;
+}
+
+.nicEdit-main 
+{
+	padding:5px 10px !important;
+}

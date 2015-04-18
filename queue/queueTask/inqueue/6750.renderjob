@@ -1,0 +1,10 @@
+---
+JobID: 6750
+Type: wmv
+Source: >
+  /var/www/toadsquare_branch/dev/media/X6FkH76M/showcase///file/p19grfm0c718mh12os1bcs87aqev4.wmv
+Destination: >
+  /var/www/toadsquare_branch/dev/media/X6FkH76M/showcase///file/converted/p19grfm0c718mh12os1bcs87aqev4.mp4
+ThumbPath: >
+  /var/www/toadsquare_branch/dev/media/X6FkH76M/showcase///file/
+Added: 2015-03-20 12:54:01

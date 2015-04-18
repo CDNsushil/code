@@ -1,0 +1,9 @@
+---
+title: Flowplayer Commercial License v0.3
+extends: site.j2
+body_id: terms
+body_class: page
+default_block: markdown
+---
+
+{% include "license/commercial-raw.md" %}
